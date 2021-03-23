@@ -38,6 +38,7 @@ app.use('/', require('./routes/index'));
 app.use('/login', require('./routes/login'));
 app.use('/join', require('./routes/join'));
 app.use('/dupCheck', require('./routes/dupCheck'));
+app.use('/cash_board', require('./routes/cash_board'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
