@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Damoa</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            outline: none;
+        }
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            color: #212529;
+            font-family: "Noto Sans KR", AppleSDGothicNeo, "Apple SD Gothic Neo", AppleSDGothicNeo-Light, HelveticaNeue-Light, "Malgun Gothic", "맑은 고딕", sans-serif;
+            font-weight: 400;
+            min-height: 100%;
+        }
+        section, article, aside, footer, header,nav, hgroup {
+            display: block;
+        }
+        #menubar {
+            background: #acdeaa;
+            height:70px;
+            top: 0;
+            left: 0;
+            right: 0;
+            position: fixed;
+            z-index: 100;
+        }
+        .content_box {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 100px;
+            height: 100%;
+
+        }
+        .search_box  input {
+            font-size: 16px;
+            padding:0px 10px;
+            height: 42px;
+            outline: none;
+            border: 2px solid #f5c0c0;
+            border-radius: 20px;
+            width: 100%;
+        }
+        #menubar ul{
+            display: inline;
+            padding: 0;
+        }
+        #menubar ul li{
+            display: inline;
+            list-style-type: none;
+            padding:0px 10px;
+            font-size: 20px;
+        }
+        #menubar ul li a{
+            color: white;
+            text-decoration: none;
+        }
+        #menubar ul li a:hover{
+            color: #f5c0c0;
+        }
+        .search_box i {
+            color: white;
+            font-size: 26px;
+
+        }
+        .search_box i:hover{
+            color: #f5c0c0;
+        }
+        /*.space {*/
+        /*    display: inline-block;*/
+        /*    width: 100%;*/
+        /*    height: 64px;*/
+        /*}*/
+        .menu_table {
+            display: table;
+            width: 100%;
+            height: 70px;
+            vertical-align:middle;
+        }
+        .menu_cell {
+            display: table-cell;
+            width: auto;
+            height: 70px;
+        }
+        .menu_cell:nth-child(1) {
+            width: 50px;
+            vertical-align: middle;
+        }
+        .menu_cell:nth-child(2) {
+            width: auto;
+            padding: 0;
+            margin: 0;
+            vertical-align: middle;
+            padding: 0px 15px;
+        }
+        .menu_cell:nth-child(3) {
+            width: 121px;
+            vertical-align: middle;
+        }
+        .search_table {
+            max-width: 600px;
+            display: table;
+            width: 100%;
+        }
+        .search_cell {
+            display: table-cell;
+        }
+        .search_cell:nth-child(1) {
+            vertical-align: middle;
+            width: auto;
+            padding-right: 30px;
+        }
+        .search_cell:nth-child(2) {
+            width: 26px;
+            vertical-align: middle;
+        }
+        #fixed_cash{
+            position: fixed;
+            bottom:10px;
+            right:10px;
+            font-size: 40px;
+            padding: 5px;
+            color: #239d60;
+        }
+        #fixed_cash:hover{
+            color: #acdeaa;
+        }
+        #main {
+            margin-top: 70px;
+            width: 100%;
+            display: grid;
+        }
+        .main-section-top{
+            background-color: #fffafa;
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 725px;
+            display: flex;
+        }
+        .main-section-middle{
+            background-color: #f9f7d9;
+            position: relative;
+            width: 100%;
+            height: 725px;
+            display: flex;
+        }
+        .main-section-end{
+            background-color: #fffafa;
+            position: relative;
+            padding-top: 0px;
+            width: 100%;
+            height: 725px;
+            display: flex;
+        }
+        .main-section-developer{
+            background-color: #f0f0f0;
+            width: 100%;
+            height: 300px;
+        }
+
+        @media (max-width: 700px) {
+            .menu_cell:nth-child(2), .menu_cell:nth-child(3) {
+                display: none;
+            }
+            .menu_cell:nth-child(1) {
+                width: auto;
+            }
+            /*#main{*/
+            /*    height: ;*/
+            /*    width: auto;*/
+            /*}*/
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+
+</head>
+<body>
+<nav id="menubar">
+    <div class="content_box">
+        <div class="menu_table">
+            <div class="menu_cell">
+                로고
+            </div>
+            <div class="menu_cell">
+                <div class="search_box">
+                    <div class="search_table">
+                        <div class="search_cell">
+                            <div class="textcell">
+                                <input type="text" placeholder="검색어를 입력하세요.">
+                            </div>
+
+                        </div>
+                        <div class="search_cell">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_cell">
+                <ul>
+                    <li><a href="#"><b>login</b></a></li>
+                    <li><a href="#"><b>join</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<main id="main">
+    <section class="main-section-top">
+
+    </section>
+    <section class="main-section-middle">
+
+    </section>
+    <section class="main-section-end">
+
+    </section>
+    <section class="main-section-developer">
+
+    </section>
+
+</main>
+
+<div id="fixed_cash">
+    <i class="fas fa-donate"></i>
+</div>
+
+</body>
+</html>
