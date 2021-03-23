@@ -12,11 +12,7 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    if(!req.session.idx)
-        res.render('join', { title: 'guest!' });
-    else
-        res.render('index_logined', { title: req.session.nickname });
-
+    res.render('cash_board',{title: 'express'});
 });
 
 router.post('/', function(req, res, next) {
