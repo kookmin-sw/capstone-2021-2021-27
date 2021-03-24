@@ -13,11 +13,8 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    if(!req.session.idx)
-        res.render('login', { title: 'have to login' });
-    else
-        res.render('cash_board', { title: req.session.nickname });
-
+    res.render(`manager`);
+    rds.send()
 });
 
 
