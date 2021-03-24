@@ -3,16 +3,17 @@ var mysql = require('mysql');
 var router = express.Router();
 var util = require('util');
 var connection = mysql.createConnection({
-    host     : 'localhost',
+    host     : 'capstone.louissoft.kr',
+    port     : '26773',
     user     : 'capstone_27',
-    password : 'capstone_27',
+    password : 'zoqtmxhs27wh!',
     database : 'capstone_27'
 });
 connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('cash_board',{title: 'express'});
+    res.render('join',{title: 'express'});
 });
 
 router.post('/', function(req, res, next) {
