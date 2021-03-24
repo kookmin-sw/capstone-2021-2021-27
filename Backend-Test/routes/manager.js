@@ -13,19 +13,30 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render(`manager`);
-    rds.send()
+    connection.query('CALL `capstone_27`.`cashReqList`();', function(err, results, fields) {
+        if (err) {
+            console.log('deposit request failed');
+        }
+        else {
+            var resultmsg = JSON.stringify(results[0]);
+            console.log(resultmsg);
+            res.send(resultmsg);
+            // res.render('manager')
+        }
+    });
+
+
 });
 
 
 router.post('/', function(req, res, next) {
 
-    connection.query(util.format('CALL `capstone_27`.`reqDeposit`(\'%s\', \'%s\');', req.session.idx, req.body.dps), function(err, results, fields) {
+    connection.query('CALL `capstone_27`.`cashReqList`();', function(err, results, fields) {
         if (err) {
             console.log('deposit request failed');
         }
         else {
-            console.log('sucess deposit request');
+            console.log(results);
             res.render('cash_board')
         }
     });

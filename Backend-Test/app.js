@@ -7,10 +7,10 @@ var session = require('express-session')
 var MySQLStore = require('express-mysql-session')(session);
 
 var options = {
-  host: 'localhost',
-  port: 3306,
+  host: 'capstone.louissoft.kr',
+  port: 26773,
   user: 'capstone_27',
-  password: 'capstone_27',
+  password: 'zoqtmxhs27wh!',
   database: 'capstone_27'
 };
 
