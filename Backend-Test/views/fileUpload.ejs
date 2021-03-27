@@ -51,16 +51,17 @@
 
 </div>
 <div id="article">
-    <a href="manager">
-        <div class ="manager btn">
-            매니저
-        </div>
-    </a>
-    <a href="fileUpload">
-        <div class ="manager btn">
-            file_upload
-        </div>
-    </a>
+<!--    <a href="manager">-->
+<!--        <div class ="manager btn">-->
+<!--            매니저-->
+<!--        </div>-->
+<!--    </a>-->
+    <form action="fileUpload" method="post" enctype="multipart/form-data">
+        <input type="file" name="imgFile" multiple>
+        <input type="text" name="postText">
+        <input type="submit" value="파일 업로드하기">
+    </form>
+
 </div>
 </body>
 </html>
