@@ -40,6 +40,7 @@ app.use('/join', require('./routes/join'));
 app.use('/dupCheck', require('./routes/dupCheck'));
 app.use('/cash_board', require('./routes/cash_board'));
 app.use('/manager', require('./routes/manager'));
+app.use('/fileUpload', require('./routes/fileUpload'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
