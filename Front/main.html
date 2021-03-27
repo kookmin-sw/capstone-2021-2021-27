@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,43 +12,36 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
-        .login_box_parent {
+        .main-section-top{
+            background-color: #fffafa;
+            position: relative;
+            margin: 0 auto;
+            width: 100%;
+            height: 725px;
             display: flex;
+        }
+        .main-section-middle{
+            background-color: #f9f7d9;
+            position: relative;
             width: 100%;
-            height: 100%;
-            align-items: center;
-            justify-content: center;
+            height: 725px;
+            display: flex;
         }
-        .login_box {
+        .main-section-end{
+            background-color: #fffafa;
+            position: relative;
+            padding-top: 0px;
             width: 100%;
+            height: 725px;
+            display: flex;
         }
-        .labeled {
-            display: inline-block;
+        .main-section-developer{
+            background-color: #f0f0f0;
             width: 100%;
-        }
-        .label_content {
-            border: 3px solid var(--main);
-            padding: 100px 220px;
-        }
-        .label_title {
-            padding: 10px 50px;
-            background-color: var(--main);
-            display: inline-block;
-            color: white;
-        }
-        .login_box h2 {
-            text-align: center;
-        }
-        .login_box .btn-block {
-            display: block;
-            width: 100%;
-            background-color: var(--main);
-            border-color: var(--main);
-        }
-        .login_box input, .login_box button {
-            margin: 16px 0px;
+            height: 300px;
         }
     </style>
+
 </head>
 <body>
 <div id="fixed_cash">
@@ -84,24 +77,19 @@
     </div>
 </nav>
 <main id="main">
-    <div class="content_box">
-        <div class="login_box_parent">
-            <div class="login_box">
-                <div class="labeled">
-                    <div class="label_title">로그인</div>
-                    <div class="label_content">
-                        <form>
-                            <input type="text" class="form-control input-lg" placeholder="아이디">
-                            <input type="password" class="form-control input-lg" placeholder="비밀번호">
-                            <button type="submit" class="btn btn-lg btn-primary btn-block">로그인</button>
-                        </form>
-                        <button type="button" class="btn btn-lg btn-primary btn-block">회원 가입</button>
-                    </div>
-            </div>
+    <section class="main-section-top">
 
+    </section>
+    <section class="main-section-middle">
 
-        </div>
-    </div>
+    </section>
+    <section class="main-section-end">
+
+    </section>
+    <section class="main-section-developer">
+
+    </section>
+
 </main>
 </body>
 </html>
