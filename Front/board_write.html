@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Damoa</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/colorChip.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
+    <style>
+        .board_write_parent {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            align-items: center;
+            justify-content: center;
+        }
+        .board_write {
+            width: 100%;
+        }
+        .labeled {
+            margin-top: 300px;
+            padding: 150px 0;
+            display: inline-block;
+            width: 100%;
+        }
+        .label_content {
+            border: 3px solid var(--main);
+            padding: 80px 60px;
+        }
+        .board-title {
+            display: inline-block;
+            width: 100%;
+        }
+        .board-title input {
+            display: inline-block;
+            width: 90%;
+            float: right;
+        }
+        .board-title h5{
+            padding-left: 10px;
+            padding-top: 6px;
+            display: inline-block;
+        }
+        .board-option {
+            display: inline-block;
+            float: right;
+            margin-left: 10px;
+            width: 19%;
+        }
+        form {
+            padding: 30px 0px;
+        }
+        form input, form textarea, form h5 {
+            margin-bottom: 50px;
+        }
+        .label_title {
+            font-weight: bold;
+            padding: 10px 50px;
+            background-color: var(--main);
+            display: inline-block;
+            color: white;
+        }
+
+
+        .btn-block {
+            display: block;
+            width: 100%;
+            background-color: var(--main);
+            border-color: var(--main);
+        }
+
+        .labelling {
+            padding: 100px 200px;
+            position: fixed;
+            top: 70px;
+            z-index: 100;
+            width: 100%;
+            height: 90%;
+            display: none;
+            background-color: white;
+        }
+
+        #image {
+            width: 50%;
+            height: 50%;
+        }
+
+        .label_content h5 {
+            text-align: right;
+        }
+        .img-box {
+            display: inline-block;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="fixed_cash">
+    <i class="fas fa-donate"></i>
+</div>
+<nav id="menubar">
+    <div class="content_box">
+        <div class="menu_table">
+            <div class="menu_cell">
+                로고
+            </div>
+            <div class="menu_cell">
+                <div class="search_box">
+                    <div class="search_table">
+                        <div class="search_cell">
+                            <div class="textcell">
+                                <input type="text" placeholder="검색어를 입력하세요.">
+                            </div>
+                        </div>
+                        <div class="search_cell">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_cell">
+                <ul>
+                    <li><a href="login"><b>logout</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<main id="main">
+    <div class="content_box">
+        <div class="board_write_parent">
+            <div class="board_write">
+                <div class="labeled">
+                    <div class="label_title">게시물 작성</div>
+                    <div class="label_content">
+                        <form>
+                            <div class="board-title">
+                                <h5>제목 : </h5>
+                                <input type="text" class="form-control input-lg " placeholder="ex) 신호등 빨간불 사진 1000장 구합니다.">
+                            </div>
+                            <input class="form-control-file" type="file" multiple id="upload" accept="image/*" onchange="setThumbnail(event);"/>
+                            <input id="price" type="number" class="form-control input-lg board-option" placeholder="수량">
+                            <input id="quantity" type="number" class="form-control input-lg board-option" placeholder="1개 가격">
+                            <textarea name="Text1" cols="40" rows="10" class="form-control input-lg" placeholder="내용 ( 원하는 데이터의 설명을 구체적으로 적어 주세요. )"></textarea>
+                            <h5 id="total_price">
+                                Total Price 10,000원
+                            </h5>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">등록</button>
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class="labelling">
+    <button type="button" class="btn btn-lg btn-primary btn-block finish_btn">다음</button>
+    <div class="img-box">
+        <img id="image">
+    </div>
+
+</div>
+<script>
+    var now_x = 0;
+    var now_y = 0;
+    var now_width = 0;
+    var now_height = 0;
+
+    var Image = {
+        x: 0,
+        y: 0,
+        width: 0,
+        height: 0
+    };
+    var Image = function(x, y, width, height) {
+        this.x = x;
+        this.y = y;
+        this.width = width;
+        this.height = height;
+    }
+    var imageArr = [];
+    var idx = 0;
+
+    var target_files;
+    function setThumbnail(event) {
+        if ($('#upload')[0].files.length != 5) {
+            alert("5개의 샘플을 선택하여 주세요.");
+            $('#upload')[0].value = null;
+        }
+        else {
+            $('.labelling').css('display', 'block');
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var tag = document.getElementById('image');
+                tag.setAttribute("src", event.target.result)
+                var cropper = new Cropper(tag, {
+                    crop(event) {
+                        now_x = event.detail.x;
+                        now_y = event.detail.y;
+                        now_width = event.detail.width;
+                        now_height = event.detail.height;
+                    },
+                });
+            };
+            target_files = event.target.files;
+            reader.readAsDataURL(target_files[0]); // 0 1 2 3 4 이용해서 진행할 것.
+        }
+    }
+    function CalcPrice() {
+        var q = parseInt($('#quantity').val());
+        var p = parseInt($('#price').val());
+        var mul = p*q;
+        if(isNaN(mul)) {
+            $('#total_price').text('Total Price : 0원');
+        }
+        else {
+            $('#total_price').text('Total Price : '+mul+'원');
+
+        }
+    }
+
+    $('#quantity').on('change', function() {
+        CalcPrice();
+    });
+    $('#price').on('change', function() {
+        CalcPrice();
+    });
+    $('.finish_btn').on('click', function() {
+        var tag = document.getElementById('image');
+        tag.cropper.destroy();
+
+        // 전처리
+        if(now_x < 0) now_x = 0;
+        if(now_y < 0) now_y = 0;
+
+        var tmp = new Image(now_x, now_y, now_width, now_height);
+        imageArr.push(tmp);
+        idx ++;
+        if(idx >= 5) {
+            $('.labelling').css('display', 'none');
+            console.log(imageArr);
+        }
+
+        else {
+            var reader = new FileReader();
+            reader.onload = function(event) {
+                var tag = document.getElementById('image');
+                tag.setAttribute("src", event.target.result)
+                var cropper = new Cropper(tag, {
+                    crop(event) {
+                        now_x = event.detail.x;
+                        now_y = event.detail.y;
+                        now_width = event.detail.width;
+                        now_height = event.detail.height;
+                    },
+                });
+            };
+            reader.readAsDataURL(target_files[idx]);
+        }
+    });
+</script>
+</body>
+</html>
