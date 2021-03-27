@@ -1,9 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     outline: none;
 }
-body, html {
+html, body {
     width: 100%;
     height: 100%;
     position: relative;
@@ -16,7 +18,7 @@ section, article, aside, footer, header,nav, hgroup {
     display: block;
 }
 #menubar {
-    background: #acdeaa;
+    background: var(--main);
     height:70px;
     top: 0;
     left: 0;
@@ -36,7 +38,7 @@ section, article, aside, footer, header,nav, hgroup {
     padding:0px 10px;
     height: 42px;
     outline: none;
-    border: 2px solid #f5c0c0;
+    border: 2px solid var(--hover);
     border-radius: 20px;
     width: 100%;
 }
@@ -55,7 +57,7 @@ section, article, aside, footer, header,nav, hgroup {
     text-decoration: none;
 }
 #menubar ul li a:hover{
-    color: #f5c0c0;
+    color: var(--hover);
 }
 .search_box i {
     color: white;
@@ -63,13 +65,9 @@ section, article, aside, footer, header,nav, hgroup {
 
 }
 .search_box i:hover{
-    color: #f5c0c0;
+    color: var(--hover);
 }
-/*.space {*/
-/*    display: inline-block;*/
-/*    width: 100%;*/
-/*    height: 64px;*/
-/*}*/
+
 .menu_table {
     display: table;
     width: 100%;
@@ -93,7 +91,7 @@ section, article, aside, footer, header,nav, hgroup {
     padding: 0px 15px;
 }
 .menu_cell:nth-child(3) {
-    width: 121px;
+    width: 130px;
     vertical-align: middle;
 }
 .search_table {
@@ -116,21 +114,21 @@ section, article, aside, footer, header,nav, hgroup {
 #fixed_cash{
     position: fixed;
     bottom:10px;
-    right:15px;
+    right:20px;
     font-size: 40px;
     padding: 5px;
     color: #239d60;
+    z-index: 100;
 }
 #fixed_cash:hover{
-    color: #acdeaa;
+    color: var(--main);
 }
-
-space {
-    display: block;
-    height: 70px;
-    background-color: rebeccapurple;
+#main {
+    padding-top: 70px;
+    display: inline-block;
+    width: 100%;
+    height: 100%;
 }
-
 @media (max-width: 700px) {
     .menu_cell:nth-child(2), .menu_cell:nth-child(3) {
         display: none;
@@ -138,7 +136,5 @@ space {
     .menu_cell:nth-child(1) {
         width: auto;
     }
-    .menu_cell {
-        text-align: center;
-    }
+
 }
