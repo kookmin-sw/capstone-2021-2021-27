@@ -4,4 +4,6 @@
 :root{
     --main: #acdeaa;
     --hover: #f5c0c0;
+    --black_opacity5: rgba(0, 0, 0, 0.5);
+    --mine_shaft : #353535;
 }

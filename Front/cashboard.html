@@ -1,4 +1,4 @@
-    <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -12,14 +12,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
-        .login_box_parent {
+        .cash_board_parent {
             display: flex;
             width: 100%;
             height: 100%;
             align-items: center;
             justify-content: center;
         }
-        .login_box {
+        .cash_board {
             width: 100%;
         }
         .labeled {
@@ -37,17 +37,49 @@
             display: inline-block;
             color: white;
         }
-        .login_box h2 {
+        .cash_board h2 {
             text-align: center;
         }
-        .login_box .btn-block {
+        .btn-block {
             display: block;
             width: 100%;
             background-color: var(--main);
             border-color: var(--main);
         }
-        .login_box input, .login_box button {
+        .cash_board input, .cash_board button {
             margin: 16px 0px;
+        }
+        .cash_title {
+            display: inline-block;
+
+        }
+        .cash_value {
+            display: inline-block;
+            float: right;
+        }
+        .cash {
+            margin-top: 10px;
+            font-weight: bold;
+            font-size: 22px;
+            display: inline-block;
+            width: 100%;
+        }
+        .font-little {
+            font-size: 16px;
+        }
+
+        value {
+            color: var(--main);
+        }
+        .cash:nth-child(1), .cash:nth-child(4) {
+            border-bottom: 1px solid black;
+        }
+        .cash_last {
+            padding-top: 40px;
+        }
+
+        form {
+            margin-top: 50px;
         }
 
         @media (max-width: 1000px) {
@@ -58,7 +90,7 @@
 
         @media (max-width: 600px) {
             .label_content {
-                padding: 20px 50px;
+                padding: 10px 30px;
             }
         }
 
@@ -90,8 +122,7 @@
             </div>
             <div class="menu_cell">
                 <ul>
-                    <li><a href="login"><b>login</b></a></li>
-                    <li><a href="join"><b>join</b></a></li>
+                    <li><a href="login"><b>logout</b></a></li>
                 </ul>
             </div>
         </div>
@@ -99,21 +130,35 @@
 </nav>
 <main id="main">
     <div class="content_box">
-        <div class="login_box_parent">
-            <div class="login_box">
+        <div class="cash_board_parent">
+            <div class="cash_board">
                 <div class="labeled">
-                    <div class="label_title">로그인</div>
+                    <div class="label_title">캐시보드</div>
                     <div class="label_content">
+                        <div class="cash">
+                            <div class="cash_title">전체 잔액</div>
+                            <div class="cash_value"><value>10,000</value> 원</div>
+                        </div>
+                        <div class="cash font-little">
+                            <div class="cash_title">출금 대기</div>
+                            <div class="cash_value"><value>1,000</value> 원</div>
+                        </div>
+                        <div class="cash font-little">
+                            <div class="cash_title">거래 대기</div>
+                            <div class="cash_value"><value>1,000</value> 원</div>
+                        </div>
+                        <div class="cash cash_last">
+                            <div class="cash_title">사용 가능</div>
+                            <div class="cash_value"><value>8,000</value> 원</div>
+                        </div>
                         <form>
-                            <input type="text" class="form-control input-lg" placeholder="아이디">
-                            <input type="password" class="form-control input-lg" placeholder="비밀번호">
-                            <button type="submit" class="btn btn-lg btn-primary btn-block">로그인</button>
+                            <input type="text" class="form-control input-lg" placeholder="입출금 예정 금액">
+                            <button type="button" class="btn btn-lg btn-primary btn-block">입금 신청</button>
+                            <button type="submit" class="btn btn-lg btn-primary btn-block">출금 신청</button>
                         </form>
-                        <button type="button" class="btn btn-lg btn-primary btn-block">회원 가입</button>
                     </div>
+                </div>
             </div>
-
-
         </div>
     </div>
 </main>

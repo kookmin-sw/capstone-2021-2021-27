@@ -10,7 +10,7 @@ html, body {
     height: 100%;
     position: relative;
     color: #212529;
-    font-family: "Noto Sans KR", AppleSDGothicNeo, "Apple SD Gothic Neo", AppleSDGothicNeo-Light, HelveticaNeue-Light, "Malgun Gothic", "맑은 고딕", sans-serif;
+    font-family: "Noto Sans KR", "Malgun Gothic", "맑은 고딕", sans-serif;
     font-weight: 400;
     min-height: 100%;
 }
@@ -95,7 +95,7 @@ section, article, aside, footer, header,nav, hgroup {
     vertical-align: middle;
 }
 .search_table {
-    max-width: 600px;
+    max-width: 500px;
     display: table;
     width: 100%;
 }
@@ -105,7 +105,7 @@ section, article, aside, footer, header,nav, hgroup {
 .search_cell:nth-child(1) {
     vertical-align: middle;
     width: auto;
-    padding-right: 30px;
+    padding-right: 10px;
 }
 .search_cell:nth-child(2) {
     width: 26px;
@@ -133,8 +133,25 @@ section, article, aside, footer, header,nav, hgroup {
     .menu_cell:nth-child(2), .menu_cell:nth-child(3) {
         display: none;
     }
+    .menu_cell {
+        text-align: center;
+    }
     .menu_cell:nth-child(1) {
         width: auto;
     }
+    .content_box {
+        padding: 0 50px;
+    }
 
+}
+@media (max-width: 1000px) {
+    .label_content {
+        padding: 50px 110px;
+    }
+}
+
+@media (max-width: 600px) {
+    .label_content {
+        padding: 10px 30px;
+    }
 }
