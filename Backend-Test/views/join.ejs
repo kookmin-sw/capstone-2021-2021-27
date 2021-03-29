@@ -2,78 +2,163 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Capstone_27</title>
+    <title>Data Damoa - Join</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/colorChip.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-        body {
+        .join_box_parent {
+            display: flex;
             width: 100%;
             height: 100%;
+            align-items: center;
+            justify-content: center;
         }
-        a {
-            text-decoration: none;
-            color: white;
+        .join_box {
+            margin-top: 250px;
+            padding: 150px 0;
+            width: 100%;
         }
-        #header {
-            height: 64px;
-            background-color: black;
-            top: 0;
-            left: 0;
-            right: 0;
-            position: fixed;
-            color: white;
-        }
-        #space {
-            height: 64px;
-        }
-        #article {
-            height: 3000px;
-        }
-        .btn {
-            padding: 10px 20px;
-            background-color: darkblue;
+        .labeled {
             display: inline-block;
+            width: 100%;
+        }
+        .label_content {
+            border: 3px solid var(--main);
+            width: 500px;
+            padding: 50px 50px;
+            margin: 0 136px;
+        }
+        .label_content input{
+            display: inline-block;
+            width: 300px;
+        }
+        .label_title {
+            padding: 10px 50px;
+            background-color: var(--main);
+            display: inline-block;
+            color: white;
+            margin-left: 136px;
+        }
+        .join_box h2 {
+            text-align: center;
+        }
+        .join_box .btn-block {
+            display: block;
+            width: 100%;
+            margin-top: 70px;
+            background-color: var(--main);
+            border-color: var(--main);
+        }
+        .btn-checkd{
+            display: inline-block;
+            padding:0px;
+            margin: 0 6px;
+            width: 80px;
+            height: 30px;
+            background-color: var(--main);
+            border-color: var(--main);
+        }
+        .join_box input {
+            margin: 8px 0px;
         }
 
     </style>
 </head>
 <body>
-<div id="header">
-    <a href="login">
-        <div class="login btn">
-            로그인
+<div id="fixed_cash">
+    <i class="fas fa-donate"></i>
+</div>
+<nav id="menubar">
+    <div class="content_box">
+        <div class="menu_table">
+            <div class="menu_cell">
+                로고
+            </div>
+            <div class="menu_cell">
+                <div class="search_box">
+                    <div class="search_table">
+                        <div class="search_cell">
+                            <div class="textcell">
+                                <input type="text" placeholder="검색어를 입력하세요.">
+                            </div>
+                        </div>
+                        <div class="search_cell">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_cell">
+                <ul>
+                    <li><a href="login"><b>login</b></a></li>
+                    <li><a href="join"><b>join</b></a></li>
+                </ul>
+            </div>
         </div>
-    </a>
-</div>
-<div id="space">
+    </div>
+</nav>
+<main id="main">
+    <div class="content_box">
+        <div class="join_box_parent">
+            <div class="join_box">
+                <div class="labeled">
+                    <div class="label_title">회 원 가 입</div>
+                    <div class="label_content">
+                        <form method="post" action="/">
+                            <input name="name" type="text" class="form-control input-lg" placeholder="이름">
+                            <input name="id" type="text" class="form-control input-lg idtext" placeholder="아이디"><button type="button" class="btn btn-primary btn-checkd id-check">중복 확인</button>
+                            <input type="text" name="nickname" class="form-control input-lg nicktext" placeholder="닉네임"><button type="button" class="btn btn-primary btn-checkd nick-check">중복 확인</button>
+                            <input type="password" name="password" class="form-control input-lg" placeholder="비밀번호">
+                            <input type="password" class="form-control input-lg" placeholder="비밀번호 확인">
+                            <input type="text" name="phone" class="form-control input-lg" placeholder="전화번호">
+                            <input type="email" name="email" class="form-control input-lg emailtext" placeholder="e-mail"><button type="button" class="btn btn-primary btn-checkd email-check">중복 확인</button>
+                            <input type="text" name="bank" class="form-control input-lg" placeholder="은행">
+                            <input type="text" name="bank_num" class="form-control input-lg" placeholder="계좌번호">
 
-</div>
-<div id="article">
-    <p>Join</p>
-    <form method="POST" action="join">
-        <input type="text" name="id" placeholder="아이디" class="idtext"> <div class="btn idDup">중복 확인</div><br>
-        <input type="password" name="password" placeholder="비밀번호"><br>
-        <input type="text" name="name" placeholder="이름"><br>
-        <input type="text" name="nickname" placeholder="닉네임"><br>
-        <input type="text" name="phone" placeholder="휴대폰번호"><br>
-        <input type="email" name="email" placeholder="이메일"><br>
-        <input type="text" name="bank" placeholder="은행명"><br>
-        <input type="text" name="bank_num" placeholder="계좌번호"><br>
-        <input type="submit">
-    </form>
-</div>
-</body>
+                            <button type="button" class="btn btn-lg btn-primary btn-block btn-join">회 원 가 입</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
 <script>
-    document.getElementsByClassName('idDup')[0].onclick = function() {
+    var id_pass = false;
+    var nick_pass = false;
+    var email_pass = false;
+
+    $('.btn-join').on('click', function() {
+        if(id_pass && nick_pass && email_pass) {
+            $()
+        }
+        else {
+            alert('중복확인을 진행하여 주십시오.');
+        }
+    });
+
+    $('.id-check').on('click', function() {
         var myid = (document.getElementsByClassName('idtext')[0].value);
         xhr = new XMLHttpRequest();
         xhr.open("post", "dupCheck", true);
         xhr.onreadystatechange = function() { //폴백
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) { //200은 잘넘어왔단 것이다.
-
+                    var res = JSON.parse(xhr.responseText);
+                    if(res["result"] == "success") {
+                        alert('입력하신 아이디는 사용 가능합니다.');
+                        id_pass = true;
+                    }
+                    else {
+                        alert('이미 사용중인 아이디입니다.')
+                        id_pass = false;
+                    }
                 } else {
                     alert("요청오류 : " + xhr.status);
                 }
@@ -81,7 +166,59 @@
         }
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("mode=id" + "&param=" + myid);
-    }
-</script>
+    });
 
-</html>
+
+    $('.nick-check').on('click', function() {
+        var myid = (document.getElementsByClassName('nicktext')[0].value);
+        xhr = new XMLHttpRequest();
+        xhr.open("post", "dupCheck", true);
+        xhr.onreadystatechange = function() { //폴백
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) { //200은 잘넘어왔단 것이다.
+                    var res = JSON.parse(xhr.responseText);
+                    if(res["result"] == "success") {
+                        alert('입력하신 닉네임은 사용 가능합니다.');
+                        nick_pass = true;
+                    }
+                    else {
+                        alert('이미 사용중인 닉네임입니다..')
+                        nick_pass = false;
+                    }
+                } else {
+                    alert("요청오류 : " + xhr.status);
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("mode=nickname" + "&param=" + myid);
+    });
+
+
+    $('.email-check').on('click', function() {
+        var myid = (document.getElementsByClassName('emailtext')[0].value);
+        xhr = new XMLHttpRequest();
+        xhr.open("post", "dupCheck", true);
+        xhr.onreadystatechange = function() { //폴백
+            if (xhr.readyState == 4) {
+                if (xhr.status == 200) { //200은 잘넘어왔단 것이다.
+                    var res = JSON.parse(xhr.responseText);
+                    if(res["result"] == "success") {
+                        alert('입력하신 이메일은 사용 가능합니다.');
+                        email_pass = true;
+                    }
+                    else {
+                        alert('이미 사용중인 이메일입니다.')
+                        email_pass = false;
+                    }
+                } else {
+                    alert("요청오류 : " + xhr.status);
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("mode=email" + "&param=" + myid);
+    });
+</script>
+    </body>
+    </html>
