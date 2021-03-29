@@ -68,8 +68,8 @@ router.post('/', function(req, res, next) {
             }
         });
     }
-    // error 400
     else {
+        console.log(req.body);
         res.status(400).end();
     }
 });

@@ -15,7 +15,7 @@ connection.connect();
 router.get('/', function(req, res, next) {
 
     if(!req.session.idx)
-        res.render('login');
+        res.render('login', {msg: ''});
     else
         res.render('index_logined', { nickname: req.session.nickname });
 
@@ -26,7 +26,7 @@ router.post('/', function(req, res, next) {
     connection.query('CALL `login`(\''+req.body.id+'\', \''+req.body.password+'\')', function(err, results, fields) {
         if (err) {
             console.log('login failed');
-            res.render('login');
+            res.render('login', {msg: '아이디 또는 패스워드가 잘못되었습니다.'});
         }
         else {
             console.log(results);
@@ -42,7 +42,7 @@ router.post('/', function(req, res, next) {
                 res.render('index_logined', { nickname: nickname });
             }
             else {
-                res.render('login');
+                res.render('login',{ msg: '아이디 또는 패스워드가 잘못되었습니다.'});
             }
 
         }
