@@ -45,8 +45,8 @@
             color: white;
             margin-left: 136px;
         }
-        .join_box h2 {
-            text-align: center;
+        .join_box h3 {
+            font-size: 16px;
         }
         .join_box .btn-block {
             display: block;
@@ -110,7 +110,8 @@
                 <div class="labeled">
                     <div class="label_title">회 원 가 입</div>
                     <div class="label_content">
-                        <form method="post" action="/">
+                        <h3><%if(locals.msg) {%> <%=msg%> <%}%></h3>
+                        <form id="join" method="post" action="">
                             <input name="name" type="text" class="form-control input-lg" placeholder="이름">
                             <input name="id" type="text" class="form-control input-lg idtext" placeholder="아이디"><button type="button" class="btn btn-primary btn-checkd id-check">중복 확인</button>
                             <input type="text" name="nickname" class="form-control input-lg nicktext" placeholder="닉네임"><button type="button" class="btn btn-primary btn-checkd nick-check">중복 확인</button>
@@ -136,7 +137,7 @@
 
     $('.btn-join').on('click', function() {
         if(id_pass && nick_pass && email_pass) {
-            $()
+            $('#join').submit();
         }
         else {
             alert('중복확인을 진행하여 주십시오.');

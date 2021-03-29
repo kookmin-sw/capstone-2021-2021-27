@@ -26,11 +26,10 @@ router.post('/', function(req, res, next) {
             console.log(results);
             if(results[0][0].result == 'success') {
                 console.log('join success');
-                res.render('login', { title: 'Hi!' });
+                res.render('login', { msg: '' });
             }
             else {
-                console.log('join failed');
-                res.render('join', { title: 'Hi!' });
+                res.render('join', { msg: '회원가입에 실패하였습니다. 회원가입을 진행하여 주십시오.' });
             }
 
         }
