@@ -18,6 +18,10 @@ router.get('/', function(req, res, next) {
 
 router.post('/', function(req, res, next) {
 
+    if(req.body.id == "" || req.body.password == "" || req.body.name == "" || req.body.nickname == "" ||  req.body.phone == "" || req.body.email == "" ||  req.body.bank == "" ||  req.body.bank_num == "") {
+        res.render('join', { msg: '회원가입에 실패하였습니다. 회원가입을 진행하여 주십시오.' });
+        return;
+    }
     connection.query(util.format('CALL `capstone_27`.`join`(\'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');', req.body.id, req.body.password, req.body.name, req.body.nickname, req.body.phone, req.body.email, req.body.bank, req.body.bank_num), function(err, results, fields) {
         if (err) {
             console.log('join failed');

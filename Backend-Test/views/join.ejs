@@ -146,6 +146,10 @@
 
     $('.id-check').on('click', function() {
         var myid = (document.getElementsByClassName('idtext')[0].value);
+        if (myid=="") {
+            alert("아이디를 입력하여 주십시오.");
+            return;
+        }
         xhr = new XMLHttpRequest();
         xhr.open("post", "dupCheck", true);
         xhr.onreadystatechange = function() { //폴백
@@ -172,6 +176,10 @@
 
     $('.nick-check').on('click', function() {
         var myid = (document.getElementsByClassName('nicktext')[0].value);
+        if (myid=="") {
+            alert("닉네임을 입력하여 주십시오.");
+            return;
+        }
         xhr = new XMLHttpRequest();
         xhr.open("post", "dupCheck", true);
         xhr.onreadystatechange = function() { //폴백
@@ -198,6 +206,10 @@
 
     $('.email-check').on('click', function() {
         var myid = (document.getElementsByClassName('emailtext')[0].value);
+        if (myid=="") {
+            alert("이메일을 입력하여 주십시오.");
+            return;
+        }
         xhr = new XMLHttpRequest();
         xhr.open("post", "dupCheck", true);
         xhr.onreadystatechange = function() { //폴백
