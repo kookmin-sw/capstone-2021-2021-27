@@ -56,7 +56,7 @@
         }
         .view-value{
             display: inline-block;
-            padding-top: 6px;
+            padding-top: 10px;
             font-size: 23px;
             width: 100%;
         }
@@ -67,9 +67,6 @@
             width: 100%;
             height: 300px;
             overflow: scroll;
-        }
-        value {
-            color: var(--main);
         }
         .qa-box {
             margin-top: 15px;
@@ -124,6 +121,9 @@
         form input, form textarea{
             margin-bottom: 10px;
         }
+        value {
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
@@ -167,17 +167,17 @@
                     <div class="label_content">
                         <div class="view-category">
                             <div class="view-title"> 제목 </div>
-                            <div class="view-value"> ㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ</div>
+                            <div class="view-value"><value><%if(locals.title) {%> <%=title%> <%}%></value></div>
                         </div>
                         <div class="view-category">
                             <div class="view-title">예시 사진</div>
                             <div class="view-value">
                                 <div class="img-box">
-                                    <img src="picture.png" width="500px" height="500px">
-                                    <img src="picture.png" width="500px" height="500px">
-                                    <img src="picture.png" width="500px" height="500px">
-                                    <img src="picture.png" width="500px" height="500px">
-                                    <img src="picture.png" width="500px" height="500px">
+<!--                                    <img src="picture.png" width="500px" height="500px">-->
+<!--                                    <img src="picture.png" width="500px" height="500px">-->
+<!--                                    <img src="picture.png" width="500px" height="500px">-->
+<!--                                    <img src="picture.png" width="500px" height="500px">-->
+<!--                                    <img src="picture.png" width="500px" height="500px">-->
                                 </div>
                             </div>
                         </div>
@@ -185,7 +185,7 @@
                             <div class="view-title">상세 설명</div>
                             <div class="view-textbox">
                                 <div class="view-value">
-                                    ddkjfskdjfsljfkjsdlkfjsdlkfjlekjf lsjfl dsjfklejflksjfklsjfklejklfsjlkfjdklfjklsjfkldsjfkldsjfklsjflks jflkjlkjef lkejflksjfkljsdklldjflksjfklsjf sjfkl sdjfklsjklfjslkfjs lfjklsfjklsjfklsjfklsdjfklsjkl
+                                    <value><%if(locals.content) {%> <%=content%> <%}%></value>
                                 </div>
                             </div>
                         </div>
@@ -212,7 +212,8 @@
         </div>
     </div>
 </main>
-<div
-<script src="css/cash.js"></script>
+<!--<script src="/css/cash.js">-->
+
+<!--</script>-->
 </body>
 </html>
