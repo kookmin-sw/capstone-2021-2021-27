@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Data Damoa</title>
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/colorChip.css">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
+    <style>
+        main {
+            padding-top: 100px;
+            width: 100%;
+        }
+        .work_summary {
+            display: inline-block;
+            width: 250px;
+            height: 280px;
+            border: 2px solid var(--main);
+            margin: 0px 25px;
+        }
+        .sum_img {
+            margin: 10px 25px;
+            width: 200px;
+            height: 200px;
+        }
+        .sum_title, .sum_price {
+            margin-left: 25px;
+            color: black;
+
+        }
+        a {
+            text-decoration: none;
+        }
+        .sum_img img {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="fixed_cash">
+    <i class="fas fa-donate"></i>
+</div>
+<nav id="menubar">
+    <div class="content_box">
+        <div class="menu_table">
+            <div class="menu_cell">
+                로고
+            </div>
+            <div class="menu_cell">
+                <div class="search_box">
+                    <div class="search_table">
+                        <div class="search_cell">
+                            <div class="textcell">
+                                <input type="text" placeholder="검색어를 입력하세요.">
+                            </div>
+                        </div>
+                        <div class="search_cell">
+                            <i class="fas fa-search"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu_cell">
+                <ul>
+                    <li><a href="login"><b>logout</b></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</nav>
+<main>
+    <div class="content_box search_result">
+
+    </div>
+</main>
+<script src="css/cash.js"></script>
+<script>
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+    }
+    $(function() {
+        // api 호출 후 값 받아오기
+        $.get("search/api/" + getParam("search"), function(data, status) {
+            console.log(data);
+            var json = data;
+            for(var i = 0; i < json.length; i++) {
+                var title = json[i]["title"];
+                var board_idx = json[i]["idx"];
+                var price = json[i]["price"];
+                var img = json[i]["example_file_idx"].split(';')[0];
+                console.log(img);
+                var html = '<div class="work_summary">' +
+                    '<a href="'+board_idx+'">' +
+                    '<div class="sum_img">' +
+                    '<img src="file/'+img+'">' +
+                    '</div>' +
+                    '<div class="sum_price">' +
+                     price + '원/1개' +
+                    '</div>' +
+                    '<div class="sum_title">' +
+                    title +
+                    '</div>' +
+                    '</a>' +
+                    '</div>';
+                $('.search_result').append(html);
+            }
+
+            if(json.length == 0) {
+                alert('검색 결과가 없습니다. 홈화면으로 이동합니다.');
+                $(location).attr('href', '/');
+
+            }
+        });
+
+
+    });
+
+
+</script>
+</body>
+</html>
