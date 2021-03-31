@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
         .board_view_parent {
-            display: flex;
             width: 100%;
             height: 100%;
             align-items: center;
@@ -23,14 +22,25 @@
             width: 100%;
         }
         .labeled {
-            margin-top: 300px;
-            padding: 150px 0;
+            padding: 50px 0 150px 0;
             display: inline-block;
             width: 100%;
+        }
+        .label_title {
+            margin-top: 50px;
+            font-weight: bold;
+            padding: 10px 50px;
+            background-color: var(--main);
+            display: inline-block;
+            color: white;
         }
         .label_content {
             border: 3px solid var(--main);
             padding: 80px 60px;
+        }
+        .label_content:nth-child(2){
+            border: 3px solid var(--main);
+            padding: 60px 60px;
         }
         .view-category {
             margin-top: 10px;
@@ -44,45 +54,75 @@
             font-size: 28px;
             border-bottom: 1px solid black;
         }
-        .view-title h5{
-            padding-left: 10px;
-            padding-top: 6px;
-            display: inline-block;
-        }
         .view-value{
             display: inline-block;
             padding-top: 6px;
             font-size: 23px;
-        }
-        .label_title {
-            font-weight: bold;
-            padding: 10px 50px;
-            background-color: var(--main);
-            display: inline-block;
-            color: white;
+            width: 100%;
         }
         .view-textbox{
             margin-top: 20px;
             display: flex;
             border: 3px solid darkgrey;
-            width: 558px;
+            width: 100%;
             height: 300px;
             overflow: scroll;
         }
         value {
             color: var(--main);
         }
-        #image {
-            width: 50%;
-            height: 50%;
+        .qa-box {
+            margin-top: 15px;
+            display: inline-block;
+            width: 100%;
+            margin-bottom: 20px;
+            border-bottom: 1px solid gray;
         }
-        .label_content h5 {
-            text-align: right;
+        .qa-box input[type=text]{
+            margin: 10px 0;
+            display: block;
+
+        }
+        .qa-title{
+            display: flex;
+            font-size: 15px;
+            font-weight: bold;
+        }
+        .qa-value{
+            display: inline-block;
+            padding-top: 6px;
+            font-size: 15px;
+            padding-bottom: 6px;
+        }
+        .btn-block{
+            display: inline-block;
+            width: 55px;
+            height: 25px;
+            background-color: ivory;
+            border: 2px solid var(--main);
+            border-color: var(--main);
+            float: right;
+            font-size: 13px;
+            padding: 0px;
+            color: gray;
+            margin-bottom: 30px;
         }
         .img-box {
             display: inline-block;
             width: 100%;
-            height: 100%;
+            height: 600px;
+            overflow-x: scroll;
+            white-space:nowrap;
+        }
+        .img-box img{
+            margin: 10px;
+            display: inline-block;
+        }
+        form {
+            padding: 5px 0px;
+        }
+        form input, form textarea{
+            margin-bottom: 10px;
         }
     </style>
 </head>
@@ -131,7 +171,15 @@
                         </div>
                         <div class="view-category">
                             <div class="view-title">예시 사진</div>
-                            <div class="view-value"></div>
+                            <div class="view-value">
+                                <div class="img-box">
+                                    <img src="picture.png" width="500px" height="500px">
+                                    <img src="picture.png" width="500px" height="500px">
+                                    <img src="picture.png" width="500px" height="500px">
+                                    <img src="picture.png" width="500px" height="500px">
+                                    <img src="picture.png" width="500px" height="500px">
+                                </div>
+                            </div>
                         </div>
                         <div class="view-category">
                             <div class="view-title">상세 설명</div>
@@ -142,10 +190,29 @@
                             </div>
                         </div>
                     </div>
+                    <div class="label_title">Q & A</div>
+                    <div class="label_content">
+                        <form>
+                            <div class="qa-title">질문자 닉네임</div>
+                            <hr>
+                            <textarea name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="문의할 내용을 적어주세요."></textarea>
+                            <button type="submit" class="btn btn-primary btn-block">등 록</button>
+                        </form>
+                        <div class="qa-box">
+                            <div class="qa-title"> 닉네임 </div>
+                            <div class="qa-value">Q : sdfjiejlksdskjfiejflksjflejifslkfjlkwjefklsjifj ejflks jfla ;fije fslkjfei</div>
+                            <br>
+                            <div class="qa-value answer-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A : sdfjiejlksdskjfiejflksjflejifslkfjlkwjefklsjifj ejflks jfla ;fije fslkjfei</div>
+                            <input type="text" class="form-control input-lg " placeholder="답글을 입력해주세요."><button type="submit" class="btn btn-primary btn-block">등 록</button>
+                        </div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 </main>
+<div
+<script src="css/cash.js"></script>
 </body>
 </html>
