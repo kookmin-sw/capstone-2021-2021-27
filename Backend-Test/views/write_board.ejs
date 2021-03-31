@@ -139,11 +139,12 @@
                 <div class="labeled">
                     <div class="label_title">게시물 작성</div>
                     <div class="label_content">
-                        <form id="form-write-board" action="fileUpload" method="post" enctype="multipart/form-data">
+                        <form id="form-write-board" action="write_board" method="post" enctype="multipart/form-data">
                             <div class="board-title">
                                 <h5>제목 : </h5>
                                 <input id="title" name="title" type="text" class="form-control input-lg " placeholder="ex) 신호등 빨간불 사진 1000장 구합니다.">
                             </div>
+                            <input id="labelData" type="hidden" name="labelData" value="">
                             <input class="form-control-file" type="file" name="imgFile" multiple id="upload" accept="image/*" onchange="setThumbnail(event);"/>
                             <input id="price" name="price" type="number" class="form-control input-lg board-option" placeholder="수량">
                             <input id="quantity" name="quantity" type="number" class="form-control input-lg board-option" placeholder="1개 가격">
@@ -151,6 +152,7 @@
                             <h5 id="total_price">
                                 Total Price : 0원
                             </h5>
+
                             <button type="button" class="btn btn-lg btn-primary btn-block btn-submit">등록</button>
 
                         </form>
@@ -243,6 +245,8 @@
             alert('수량과 금액을 다시 확인하여 주십시오.');
             return;
         }
+
+        $('#form-write-board').submit();
     });
 
     $('#quantity').on('change', function() {
@@ -265,6 +269,7 @@
         if(idx >= 5) {
             labeled = true;
             $('.labelling').css('display', 'none');
+            $('#labelData').val(JSON.stringify(imageArr));
             console.log(imageArr);
         }
 
