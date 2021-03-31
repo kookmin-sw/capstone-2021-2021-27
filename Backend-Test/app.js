@@ -42,6 +42,7 @@ app.use('/cash_board', require('./routes/cash_board'));
 app.use('/manager', require('./routes/manager'));
 app.use('/logout', require('./routes/logout'));
 app.use('/file', require('./routes/file'));
+app.use('/search', require('./routes/search'));
 app.use('/write_board', require('./routes/write_board'));
 app.use('/view_board', require('./routes/view_board'));
 
