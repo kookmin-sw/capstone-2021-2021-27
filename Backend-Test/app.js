@@ -41,6 +41,7 @@ app.use('/dupCheck', require('./routes/dupCheck'));
 app.use('/cash_board', require('./routes/cash_board'));
 app.use('/manager', require('./routes/manager'));
 app.use('/logout', require('./routes/logout'));
+app.use('/file', require('./routes/file'));
 app.use('/write_board', require('./routes/write_board'));
 
 // catch 404 and forward to error handler
