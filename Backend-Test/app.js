@@ -43,6 +43,7 @@ app.use('/manager', require('./routes/manager'));
 app.use('/logout', require('./routes/logout'));
 app.use('/file', require('./routes/file'));
 app.use('/write_board', require('./routes/write_board'));
+app.use('/view_board', require('./routes/view_board'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
