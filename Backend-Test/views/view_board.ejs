@@ -123,6 +123,7 @@
         }
         value {
             padding: 20px;
+            color: #353535;
         }
     </style>
 </head>
@@ -173,11 +174,11 @@
                             <div class="view-title">예시 사진</div>
                             <div class="view-value">
                                 <div class="img-box">
-<!--                                    <img src="picture.png" width="500px" height="500px">-->
-<!--                                    <img src="picture.png" width="500px" height="500px">-->
-<!--                                    <img src="picture.png" width="500px" height="500px">-->
-<!--                                    <img src="picture.png" width="500px" height="500px">-->
-<!--                                    <img src="picture.png" width="500px" height="500px">-->
+                                    <img src="/file/<%=file_idx[0]%>" width="500px" height="500px">
+                                    <img src="/file/<%=file_idx[1]%>" width="500px" height="500px">
+                                    <img src="/file/<%=file_idx[2]%>" width="500px" height="500px">
+                                    <img src="/file/<%=file_idx[3]%>" width="500px" height="500px">
+                                    <img src="/file/<%=file_idx[4]%>" width="500px" height="500px">
                                 </div>
                             </div>
                         </div>
@@ -192,11 +193,11 @@
                     </div>
                     <div class="label_title">Q & A</div>
                     <div class="label_content">
-                        <form>
-                            <div class="qa-title">질문자 닉네임</div>
+                        <form action="" method="POST">
+                            <div class="qa-title">질문자 닉네임 </div>
                             <hr>
-                            <textarea name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="문의할 내용을 적어주세요."></textarea>
-                            <button type="submit" class="btn btn-primary btn-block">등 록</button>
+                            <textarea id="qa_text" name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="문의할 내용을 적어주세요."></textarea>
+                            <button type="button" onclick="question()"  class="btn btn-primary btn-block btn-q">등 록</button>
                         </form>
                         <div class="qa-box">
                             <div class="qa-title"> 닉네임 </div>
@@ -212,8 +213,37 @@
         </div>
     </div>
 </main>
-<!--<script src="/css/cash.js">-->
+<script>
+    function question(){
+        console.log('ss');
+        var question =(document.getElementsByClassName('qa_text')[0].value);
+        if(question == ""){
+            alert("내용을 작성해주세요.");
+            return;
+        }
+        xhr = new XMLHttpRequest();
+        xhr.open("post", "view_board", true);
+        xhr.onreadystatechange = function(){ //서버에 요청해서 값 받아옴
+            if(xhr.readyState == 4){
+                if (xhr.status == 200){
+                    var res = (xhr.responseText);
+                    if(res == "success") {
+                        alert('입금 신청이 성공적으로 완료되었습니다.');
+                    }
+                    else {
+                        alert('입금 신청에 실패하였습니다.')
+                    }
+                }else{
+                    alert("요청오류 : " + xhr.status);
+                }
+            }
+        }
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.send("mode=question" + "&param=" + question);
+    }
+</script>
+<script src="/css/cash.js">
 
-<!--</script>-->
+</script>
 </body>
 </html>
