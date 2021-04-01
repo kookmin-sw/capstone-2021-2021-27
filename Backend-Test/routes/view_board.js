@@ -18,24 +18,45 @@ connection.connect();
 router.get('/', function(req, res, next) {
     connection.query(util.format('CALL `capstone_27`.`getBoardInfo`(\'%s\');', req.query.board_idx), function(err, results, fields) {
         if (err) {
-            console.log('get board_idx error');
+            console.log('get board_info error');
         }
         else {
-            console.log('sucess get board_idx');
+            console.log('sucess get board_info');
             console.log(results);
             var title = results[0][0]['title'];
             var content = results[0][0]['content'];
             var price = results[0][0]['price'];
             var writer_idx = results[0][0]['writer_idx'];
             var quantity = results[0][0]['quantity'];
-            var example_file_idx = results[0][0]['example_file_idx'];
+            var param_example_file_idx = results[0][0]['example_file_idx'];
             var total_price = results[0][0]['total_price'];
             var status = results[0][0]['status'];
             var date = results[0][0]['date'];
+            var split_example_file_idx = param_example_file_idx.split(';');
 
-            res.render('view_board',{title : title, content : content, price:price, writer_idx:writer_idx, quantity: quantity, example_file_idx : example_file_idx, total_price:total_price, status:status, date:date});
+            res.render('view_board',{ title : title, content : content, price:price, writer_idx:writer_idx, quantity: quantity, file_idx:split_example_file_idx, total_price:total_price, status:status, date:date});
         }
     });
+
+
+});
+
+router.post('/', function(req, res, next) {
+
+    if(req.body.mode == 'question') {
+        connection.query(util.format('CALL `capstone_27`.`writeQuestion`(\'%s\',\'%s\',\'%s\');',  req.query.board_idx, req.body.param, req.session.idx), function(err, results, fields) {
+            if (err) {
+                console.log('write question request failed');
+            }
+            else {
+                console.log('sucess write question request');
+                console.log(results);
+                res.send('ㅇㅇ');
+                // res.send(results[0][0]["result"]);
+            }
+        });
+
+    }
 
 });
 
