@@ -192,55 +192,62 @@
                         </div>
                     </div>
                     <div class="label_title">Q & A</div>
-                    <div class="label_content">
-                        <form action="" method="POST">
+                    <div class="label_content qa-content">
+                        <form id="form-qa-board" action="" method="POST">
                             <div class="qa-title">질문자 닉네임 </div>
                             <hr>
                             <textarea id="qa_text" name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="문의할 내용을 적어주세요."></textarea>
-                            <button type="button" onclick="question()"  class="btn btn-primary btn-block btn-q">등 록</button>
+                            <button type="button" class="btn btn-primary btn-block btn-q">등 록</button>
                         </form>
-                        <div class="qa-box">
-                            <div class="qa-title"> 닉네임 </div>
-                            <div class="qa-value">Q : sdfjiejlksdskjfiejflksjflejifslkfjlkwjefklsjifj ejflks jfla ;fije fslkjfei</div>
-                            <br>
-                            <div class="qa-value answer-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A : sdfjiejlksdskjfiejflksjflejifslkfjlkwjefklsjifj ejflks jfla ;fije fslkjfei</div>
-                            <input type="text" class="form-control input-lg " placeholder="답글을 입력해주세요."><button type="submit" class="btn btn-primary btn-block">등 록</button>
-                        </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
 </main>
 <script>
-    function question(){
-        console.log('ss');
-        var question =(document.getElementsByClassName('qa_text')[0].value);
-        if(question == ""){
-            alert("내용을 작성해주세요.");
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+    }
+    $(function (){
+       $.get("api/"+getParam("board_idx"), function (data, status){
+           console.log(data);
+           var json = data;
+           for(var i = 0; i < json.length; i++) {
+               var html = '<div class="qa-box">' +
+                   '<div class="qa-title">'+json[i]['questioner_nickname']+'</div>' +
+                   '<div class="qa-value">Q : '+json[i]['question']+'</div>' +
+                   '<br>' +
+                   '<div class="qa-value answer-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A : '+json[i]['answer']+'</div>' +
+                   '<input type="text" class="form-control input-lg " placeholder="답글을 입력해주세요."><button type="submit" class="btn btn-primary btn-block">등 록</button>' +
+                   '</div>';
+
+               $('.qa-content').append(html);
+
+
+           }
+
+       });
+
+
+    });
+
+    $('.btn-q').on('click', function() {
+        var qa_text = $('#qa_text').val();
+        if(qa_text == '') {
+            alert('빈 칸이 없도록 작성하여 주십시오.');
             return;
         }
-        xhr = new XMLHttpRequest();
-        xhr.open("post", "view_board", true);
-        xhr.onreadystatechange = function(){ //서버에 요청해서 값 받아옴
-            if(xhr.readyState == 4){
-                if (xhr.status == 200){
-                    var res = (xhr.responseText);
-                    if(res == "success") {
-                        alert('입금 신청이 성공적으로 완료되었습니다.');
-                    }
-                    else {
-                        alert('입금 신청에 실패하였습니다.')
-                    }
-                }else{
-                    alert("요청오류 : " + xhr.status);
-                }
-            }
-        }
-        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-        xhr.send("mode=question" + "&param=" + question);
-    }
+        $('#form-qa-board').submit();
+    });
+
 </script>
 <script src="/css/cash.js">
 
