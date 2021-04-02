@@ -33,8 +33,14 @@ router.get('/', function(req, res, next) {
             var status = results[0][0]['status'];
             var date = results[0][0]['date'];
             var split_example_file_idx = param_example_file_idx.split(';');
+            var showReply = 'false';
 
-            res.render('view_board',{ title : title, content : content, price:price, writer_idx:writer_idx, quantity: quantity, file_idx:split_example_file_idx, total_price:total_price, status:status, date:date});
+            if(req.session.idx == writer_idx)
+                showReply = 'true';
+            var myNickname = req.session.nickname;
+
+
+            res.render('view_board',{myNickname: myNickname, showReply: showReply, title : title, content : content, price:price, writer_idx:writer_idx, quantity: quantity, file_idx:split_example_file_idx, total_price:total_price, status:status, date:date});
         }
     });
 });
@@ -60,6 +66,23 @@ router.post('/', function(req, res, next) {
         else {
             console.log('sucess write question request');
             res.redirect('/view_board/?board_idx=' + req.query.board_idx);
+        }
+    });
+
+});
+
+router.post('/reply', function(req, res, next) {
+    var replyMsg = req.body.reply_text;
+    var qa_idx = req.body.qa_idx;
+
+    connection.query(util.format('CALL `capstone_27`.`writeAnswer`(\'%s\',\'%s\');',  qa_idx, replyMsg), function(err, results, fields) {
+        if (err) {
+            console.log('write answer request failed');
+            res.send('error');
+        }
+        else {
+            console.log('sucess write answer request');
+            res.redirect(req.get('referer'));
         }
     });
 
