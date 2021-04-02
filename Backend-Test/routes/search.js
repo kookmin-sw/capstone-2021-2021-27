@@ -19,7 +19,6 @@ router.get('/api/:text', function(req, res, next) {
         }
         else {
            res.json(results[0]);
-
         }
     });
 });

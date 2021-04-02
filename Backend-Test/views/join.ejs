@@ -85,10 +85,10 @@
                     <div class="search_table">
                         <div class="search_cell">
                             <div class="textcell">
-                                <input type="text" placeholder="검색어를 입력하세요.">
+                                <input id="search-text" onkeydown="EnterCheck(event);" type="text" placeholder="검색어를 입력하세요.">
                             </div>
                         </div>
-                        <div class="search_cell">
+                        <div class="search_cell search-btn">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
@@ -96,8 +96,8 @@
             </div>
             <div class="menu_cell">
                 <ul>
-                    <li><a href="login"><b>login</b></a></li>
-                    <li><a href="join"><b>join</b></a></li>
+                    <li><a href="/login"><b>login</b></a></li>
+                    <li><a href="/join"><b>join</b></a></li>
                 </ul>
             </div>
         </div>
@@ -231,6 +231,20 @@
         }
         xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
         xhr.send("mode=email" + "&param=" + myid);
+    });
+
+    function EnterCheck(event) {
+        if(event.keyCode == 13) {
+            Search();
+        }
+    }
+    function Search() {
+        var stext = $('#search-text').val();
+        console.log('stext : ' + stext);
+        document.location.href =  '/search?search='+stext;
+    }
+    $('.search-btn').on('click', function() {
+        Search();
     });
 </script>
 <script src="script/cash.js"></script>
