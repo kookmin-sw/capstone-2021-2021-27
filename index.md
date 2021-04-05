@@ -47,8 +47,10 @@ Android App
 * 담당: 개발 팀장
 * 학번: 20163110
 * 이메일: applemac@kookmin.ac.kr
+* 역할: Server, DB
 
 정지현
 * 담당: 기획 팀장
 * 학번: 20171700
 * 이메일: jung211p@kookmin.ac.kr
+* 역할: Server, DB
