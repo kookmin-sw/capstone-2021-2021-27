@@ -4,7 +4,7 @@
 캡스톤 27조 - 데이터 다모아
 ## 프로젝트 소개
 
-![DataDamoa](https://user-images.githubusercontent.com/6459539/113539084-e0829300-9617-11eb-8df6-cff2dc69ff7b.png){: width="100" height="100"}
+![DataDamoa](https://user-images.githubusercontent.com/6459539/113539084-e0829300-9617-11eb-8df6-cff2dc69ff7b.png)
 
 ### 개요
 필요한 데이터를 손쉽게 요청하고 데이터를 구매할 수 있는 플랫폼이다. 
