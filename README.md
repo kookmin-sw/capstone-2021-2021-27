@@ -1,11 +1,10 @@
 
 <!-- Data Damoa -->
 # Data Damoa
-캡스톤 27조 - 데이터 다모아<br>
-<img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png">
-## 프로젝트 소개
-
-<img width="600" src="https://user-images.githubusercontent.com/6459539/113539084-e0829300-9617-11eb-8df6-cff2dc69ff7b.png">
+<img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png"><br>
+캡스톤 27조 - 데이터 다모아
+## 구상도
+<img width="600" alt="introduction" src="https://user-images.githubusercontent.com/6459539/113553886-66600780-9633-11eb-8564-ce1e1e7a35b4.png">
 
 [팀페이지 이동](https://kookmin-sw.github.io/capstone-2021-27)
 
