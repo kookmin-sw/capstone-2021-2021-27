@@ -30,7 +30,7 @@ Android App
  * 담당: 개발 팀장
  * 학번: 20163110
  * 이메일: applemac@kookmin.ac.kr
-<br>
+
 정지현
  * 담당: 기획 팀장
  * 학번: 20171700
