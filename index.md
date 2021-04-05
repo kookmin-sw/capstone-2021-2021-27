@@ -14,11 +14,14 @@
 * Data Maker는 데이터를 제공하여 수익을 창출한다.
 * Data Collector는 머신러닝에 필요한 원하는 데이터를 쉽게 구할 수 있다.
 
-### 개발 환경
-||Front-end|Back-end|Android App|
-|-|-----|-----|-----|
-|언어|HTML5, CSS, JS|node.js|Java|
-|라이브러리|[Bootstrap](https://getbootstrap.com/)|[Express](https://expressjs.com/ko/)|X|
+### 사용 언어
+
+* Front-end
+ * HTML5, CSS, JS
+* Back-end
+ * node.js
+* Android App
+ * Java
 
  
 ### 구동 환경
@@ -28,8 +31,13 @@
 
 
 ## 27조 팀원 소개
-||박지호|정지현|
-|-|-----|-----|
-|담당|개발 팀장|기획 팀장|
-|학번|20163110|20171700|
-|이메일|applemac@kookmin.ac.kr|jung211p@kookmin.ac.kr|
+
+* 박지호
+ * 담당: 개발 팀장
+ * 학번: 20163110
+ * 이메일: applemac@kookmin.ac.kr
+* 정지현
+ * 담당: 기획 팀장
+ * 학번: 20171700
+ * jung211p@kookmin.ac.kr
+
