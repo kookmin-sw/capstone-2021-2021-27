@@ -2,6 +2,7 @@
 <!-- Data Damoa -->
 # Data Damoa
 캡스톤 27조 - 데이터 다모아
+<img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png">
 ## 프로젝트 소개
 
 <img width="600" src="https://user-images.githubusercontent.com/6459539/113539084-e0829300-9617-11eb-8df6-cff2dc69ff7b.png">
