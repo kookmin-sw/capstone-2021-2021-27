@@ -20,6 +20,10 @@
 3. Data Collector는 데이터를 수집한다.
 4. Data Maker는 Data Collector가 제시한 금액을 받는다.
 
+## 기대효과
+* Data Collector가 데이터를 손쉽게 모을 수 있다.
+* Data Maker는 게시판에 있는 데이터를 수집할 수 있으면 간단한 용돈벌이를 할 수 있다.
+
 ## 핵심 기능
 * 데이터를 요청하는 사람(Data Collector)이 필요한 데이터를 요청한다.
 * 데이터를 제공해주는 사람(Data Maker)는 Data Collector에게 필요한 데이터를 제공해준다.
