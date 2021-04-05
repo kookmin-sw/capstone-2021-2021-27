@@ -16,21 +16,21 @@
 
 ### 사용 언어
 
-* Front-end
+Front-end
  * HTML5, CSS, JS
-* Back-end
+Back-end
  * node.js
-* Android App
+Android App
  * Java
 
 
 ## 27조 팀원 소개
 
-* 박지호
+박지호
  * 담당: 개발 팀장
  * 학번: 20163110
  * 이메일: applemac@kookmin.ac.kr
-* 정지현
+정지현
  * 담당: 기획 팀장
  * 학번: 20171700
  * jung211p@kookmin.ac.kr
