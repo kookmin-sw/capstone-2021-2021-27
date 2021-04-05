@@ -64,30 +64,30 @@ Android App
 
 ## 페이지 구성
 
-<img width="350" alt="main" src="https://user-images.githubusercontent.com/6459539/113556671-c8227080-9637-11eb-9317-97dfdb05373b.png">
-
 #### 메인 페이지
 
-<img width="400" alt="login" src="https://user-images.githubusercontent.com/6459539/113556871-10419300-9638-11eb-8756-0d1f2390d7bd.png"> <img width="350" alt="join" src="https://user-images.githubusercontent.com/6459539/113556878-12a3ed00-9638-11eb-9f20-cc5ccb4d4b34.png">
+<img width="350" alt="main" src="https://user-images.githubusercontent.com/6459539/113556671-c8227080-9637-11eb-9317-97dfdb05373b.png">
 
 #### 로그인 및 회원가입 페이지
 
-<img width="450" alt="search" src="https://user-images.githubusercontent.com/6459539/113556972-3f580480-9638-11eb-8075-edd8623ab85b.png">
+<img width="400" alt="login" src="https://user-images.githubusercontent.com/6459539/113556871-10419300-9638-11eb-8756-0d1f2390d7bd.png"> <img width="350" alt="join" src="https://user-images.githubusercontent.com/6459539/113556878-12a3ed00-9638-11eb-9f20-cc5ccb4d4b34.png">
 
 #### 검색 페이지
 
-<img width="600" alt="write_board" src="https://user-images.githubusercontent.com/6459539/113557107-729a9380-9638-11eb-98c6-35be2cd632d8.png">
+<img width="450" alt="search" src="https://user-images.githubusercontent.com/6459539/113556972-3f580480-9638-11eb-8075-edd8623ab85b.png">
 
 #### 게시물 작성 페이지
 
-<img src="https://user-images.githubusercontent.com/6459539/113551229-44648600-962f-11eb-914d-db03ca25e30f.gif" width="500">
+<img width="600" alt="write_board" src="https://user-images.githubusercontent.com/6459539/113557107-729a9380-9638-11eb-98c6-35be2cd632d8.png">
 
 #### 라벨링 페이지
 
-<img width="350" alt="view" src="https://user-images.githubusercontent.com/6459539/113557243-a970a980-9638-11eb-8c0c-5dee637935a6.png"> <img width="350" alt="qa" src="https://user-images.githubusercontent.com/6459539/113557240-a8d81300-9638-11eb-9f9e-29eefdde6723.png">
+<img src="https://user-images.githubusercontent.com/6459539/113551229-44648600-962f-11eb-914d-db03ca25e30f.gif" width="500">
 
 #### 게시물 작성 및 Q&A 페이지
 
-<img width="400" alt="cash" src="https://user-images.githubusercontent.com/6459539/113557233-a7a6e600-9638-11eb-8367-4fce6fd6e137.png">
+<img width="350" alt="view" src="https://user-images.githubusercontent.com/6459539/113557243-a970a980-9638-11eb-8c0c-5dee637935a6.png"> <img width="350" alt="qa" src="https://user-images.githubusercontent.com/6459539/113557240-a8d81300-9638-11eb-9f9e-29eefdde6723.png">
 
 #### 입출금 페이지
+
+<img width="400" alt="cash" src="https://user-images.githubusercontent.com/6459539/113557233-a7a6e600-9638-11eb-8367-4fce6fd6e137.png">
