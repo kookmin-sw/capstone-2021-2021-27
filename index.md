@@ -68,8 +68,7 @@ Android App
 
 #### 메인 페이지
 
-<img width="400" alt="login" src="https://user-images.githubusercontent.com/6459539/113556871-10419300-9638-11eb-8756-0d1f2390d7bd.png">
-<img width="350" alt="join" src="https://user-images.githubusercontent.com/6459539/113556878-12a3ed00-9638-11eb-9f20-cc5ccb4d4b34.png">
+<img width="400" alt="login" src="https://user-images.githubusercontent.com/6459539/113556871-10419300-9638-11eb-8756-0d1f2390d7bd.png"> <img width="350" alt="join" src="https://user-images.githubusercontent.com/6459539/113556878-12a3ed00-9638-11eb-9f20-cc5ccb4d4b34.png">
 
 #### 로그인 및 회원가입 페이지
 
@@ -85,8 +84,7 @@ Android App
 
 #### 라벨링 페이지
 
-<img width="350" alt="view" src="https://user-images.githubusercontent.com/6459539/113557243-a970a980-9638-11eb-8c0c-5dee637935a6.png">
-<img width="350" alt="qa" src="https://user-images.githubusercontent.com/6459539/113557240-a8d81300-9638-11eb-9f9e-29eefdde6723.png">
+<img width="350" alt="view" src="https://user-images.githubusercontent.com/6459539/113557243-a970a980-9638-11eb-8c0c-5dee637935a6.png"> <img width="350" alt="qa" src="https://user-images.githubusercontent.com/6459539/113557240-a8d81300-9638-11eb-9f9e-29eefdde6723.png">
 
 #### 게시물 작성 및 Q&A 페이지
 
