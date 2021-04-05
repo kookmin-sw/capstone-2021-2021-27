@@ -18,8 +18,10 @@
 
 Front-end
  * HTML5, CSS, JS
+<br>
 Back-end
  * node.js
+<br>
 Android App
  * Java
 
