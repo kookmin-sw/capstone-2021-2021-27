@@ -34,12 +34,3 @@
 |담당|개발 팀장|기획 팀장|
 |학번|20163110|20171700|
 |이메일|applemac@kookmin.ac.kr|jung211p@kookmin.ac.kr|
-
-## 웹페이지
-
-| 페이지 | 페이지 뷰 |페이지|페이지 뷰|
-|------|-----|----|-----|
-|메인|<img width="400" src="https://user-images.githubusercontent.com/6459539/113546819-b8029500-9627-11eb-9db8-7a96fc3c6085.png"> |회원가입|<img width="400" src="https://user-images.githubusercontent.com/6459539/113546904-e1232580-9627-11eb-8621-898d69db0131.png">
-|로그인|<img width="400" src="https://user-images.githubusercontent.com/6459539/113546950-f8faa980-9627-11eb-9d4f-0b05fc321177.png">|검색|<img width="400" alt="search" src="https://user-images.githubusercontent.com/6459539/113547031-20517680-9628-11eb-8fab-66e8b1c76114.png">|
-|글 작성|<img width="400" alt="write" src="https://user-images.githubusercontent.com/6459539/113547086-35c6a080-9628-11eb-97aa-ac75aa020669.png">|라벨링|<img width="400" alt="labelling" src="https://user-images.githubusercontent.com/6459539/113547116-41b26280-9628-11eb-8230-84924bd3f48f.png">|
-|글 보기|<img width="400" alt="view" src="https://user-images.githubusercontent.com/6459539/113547156-542c9c00-9628-11eb-85a9-7c2681baa7bf.png">|Q&A|<img width="400" alt="q a" src="https://user-images.githubusercontent.com/6459539/113547167-57c02300-9628-11eb-9300-9b83bfd13c30.png">|
