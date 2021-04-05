@@ -63,3 +63,7 @@ Android App
 ## 라벨링 예시
 <img src="https://user-images.githubusercontent.com/6459539/113551229-44648600-962f-11eb-914d-db03ca25e30f.gif" width="500">
 
+--- 
+
+## 페이지 구성
+
