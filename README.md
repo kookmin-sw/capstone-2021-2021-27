@@ -2,11 +2,14 @@
 <!-- Data Damoa -->
 # Data Damoa
 <img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png"><br>
-캡스톤 27조 - 데이터 다모아
+캡스톤 27조 - 데이터 다모아 [팀페이지 이동](https://kookmin-sw.github.io/capstone-2021-27)
 ## 구상도
 <img width="600" alt="introduction" src="https://user-images.githubusercontent.com/6459539/113553886-66600780-9633-11eb-8564-ce1e1e7a35b4.png">
 
-[팀페이지 이동](https://kookmin-sw.github.io/capstone-2021-27)
+1. Data Collector가 금액을 설정하여 데이터를 요청한다.
+2. Data Maker는 사진촬영 후 라벨링하여 데이터를 전송한다.
+3. Data Collector는 데이터를 수집한다.
+4. Data Maker는 Data Collector가 제시한 금액을 받는다.
 
 ## 간단한 소개
 학습하기 위한 데이터를 필요한 이용자가 일정 금액을 주고 데이터를 요청하면 다른 이용자가 어플리케이션을 이용하여 데이터를 주고 금액을 받는 플랫폼
