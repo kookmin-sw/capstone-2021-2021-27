@@ -1,7 +1,7 @@
 
 <!-- Data Damoa -->
 # Data Damoa
-캡스톤 27조 - 데이터 다모아
+캡스톤 27조 - 데이터 다모아<br>
 <img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png">
 ## 프로젝트 소개
 
