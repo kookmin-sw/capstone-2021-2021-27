@@ -43,3 +43,4 @@
 |담당|개발 팀장|기획 팀장|
 |학번|20163110|20171700|
 |이메일|applemac@kookmin.ac.kr|jung211p@kookmin.ac.kr|
+|역할|Server, DB|Server, DB|
