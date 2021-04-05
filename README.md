@@ -55,11 +55,6 @@
 ## DB 구조
 <img width="550" alt="DB_StructureV5" src="https://user-images.githubusercontent.com/6459539/113550784-9eb11700-962e-11eb-9ee9-6d6939b5e37e.png">
 
-
- 
-## DB 구조
-<img width="550" alt="DB_StructureV5" src="https://user-images.githubusercontent.com/6459539/113550784-9eb11700-962e-11eb-9ee9-6d6939b5e37e.png">
-
 --- 
 
 ## 페이지 구성
