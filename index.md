@@ -23,12 +23,6 @@
 * Android App
  * Java
 
- 
-### 구동 환경
-|Server|Web|DB|
-|-|-|-|
-|Windows|npm|MySQL|
-
 
 ## 27조 팀원 소개
 
