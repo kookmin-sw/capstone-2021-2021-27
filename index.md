@@ -3,7 +3,7 @@
 <!-- Data Damoa -->
 # Data Damoa
 <img width="400" alt="logo" src="https://user-images.githubusercontent.com/6459539/113552548-40d1fe80-9631-11eb-94d4-f91ab43afb3e.png"><br>
-캡스톤 27조 - 데이터 다모아 [[팀페이지 이동]](https://kookmin-sw.github.io/capstone-2021-27) [[중간발표자료]](./docs/캡스톤_중간발표27.pdf
+캡스톤 27조 - 데이터 다모아 [[팀페이지 이동]](https://kookmin-sw.github.io/capstone-2021-27) [[중간발표자료]](./docs/캡스톤_중간발표27.pdf)
 
 ## 27조 팀원 소개
 박지호 
