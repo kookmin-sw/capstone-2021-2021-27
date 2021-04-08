@@ -6,9 +6,7 @@
 )
 
 ## Intro
-<video width="640" height="480" controls markdown="0">
-    <source src="https://github.com/kookmin-sw/capstone-2021-27/blob/master/docs/27_Intro.mp4?raw=true" type="video/mp4" markdown="0" >
-</video>
+[[Intro 영상 다운로드]](https://github.com/kookmin-sw/capstone-2021-27/blob/master/docs/27_Intro.mp4)
     
 ## 27조 팀원 소개
 박지호 
