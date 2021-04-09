@@ -5,8 +5,8 @@
 캡스톤 27조 - 데이터 다모아 [[팀페이지 이동]](https://kookmin-sw.github.io/capstone-2021-27) [[중간발표자료]](./docs/캡스톤_중간발표27.pdf
 )
 
-## Intro
-[[Intro 영상 다운로드]](https://github.com/kookmin-sw/capstone-2021-27/blob/master/docs/27_Intro.mp4)
+## 홍보 영상
+[[홍보 영상 다운로드]](https://github.com/kookmin-sw/capstone-2021-27/blob/master/docs/27_Intro.mp4)
     
 ## 27조 팀원 소개
 박지호 
