@@ -13,6 +13,17 @@ var connection = mysql.createConnection({
 connection.connect();
 
 router.get('/api/:text', function(req, res, next) {
+    if(req.params.text == 'all') {
+        connection.query('CALL `getBoardList`()', function(err, results, fields) {
+            if (err) {
+
+            }
+            else {
+                res.json(results[0]);
+            }
+        });
+        return;
+    }
     connection.query('CALL `search`(\''+req.params.text+'\')', function(err, results, fields) {
         if (err) {
 
