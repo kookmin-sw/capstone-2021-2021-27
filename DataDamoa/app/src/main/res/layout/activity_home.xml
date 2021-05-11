@@ -6,13 +6,10 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/home_text"
-        android:layout_width="189dp"
-        android:layout_height="51dp"
-        android:text="home"
-        tools:layout_editor_absoluteX="95dp"
-        tools:layout_editor_absoluteY="251dp"
-        tools:ignore="MissingConstraints" />
+
+    <com.example.datadamoa.WorkListView
+        android:id="@+id/home_listview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
