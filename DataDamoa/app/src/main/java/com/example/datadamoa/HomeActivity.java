@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity {
 //    TextView btn1;
 
     Button btTest;
+    WorkListView lv;
     ArrayList<Work> arrWork = new ArrayList<>();
 
     @Override
@@ -35,7 +36,7 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-
+        lv = (WorkListView)findViewById(R.id.home_listview);
         getBoardList();
 
         Log.d("getBoardList Start", "finish");
@@ -77,11 +78,20 @@ public class HomeActivity extends AppCompatActivity {
                             JSONArray ja = new JSONArray(buffer.toString());
 
                             for(int i = 0; i < ja.length(); i++) {
+                                Work w = new Work();
+                                w.idx = Integer.parseInt(ja.getJSONObject(i).getString("idx"));
+                                w.title = ja.getJSONObject(i).getString("title");;
+                                w.price = Integer.parseInt(ja.getJSONObject(i).getString("price"));
+                                arrWork.add(w);
+                            }
 
-                                String title = ja.getJSONObject(i).getString("title");
-                                Log.d("title", title);
+                            for(int i = 0; i < arrWork.size(); i++) {
+                                Log.d("workList", arrWork.get(i).title);
 
                             }
+
+                            homeViewAdapter hAdapter = new homeViewAdapter(arrWork);
+                            lv.setAdapter(hAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
