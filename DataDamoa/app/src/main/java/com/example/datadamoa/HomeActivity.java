@@ -2,12 +2,16 @@ package com.example.datadamoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
@@ -28,7 +32,7 @@ import org.json.JSONException;
 public class HomeActivity extends AppCompatActivity {
 //    TextView btn1;
 
-    Button btTest;
+    EditText searchWork;
     WorkListView lv;
     ArrayList<Work> arrWork = new ArrayList<>();
     HomeViewAdapter hAdapter;
@@ -38,16 +42,32 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        lv = (WorkListView)findViewById(R.id.home_listview);
         hAdapter = new HomeViewAdapter(arrWork);
+
+        lv = (WorkListView)findViewById(R.id.home_listview);
+        searchWork = (EditText)findViewById(R.id.editTextSearchWork);
+
+        searchWork.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                Search(searchWork.getText().toString());
+                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(searchWork.getWindowToken(), 0);
+                return true;
+            }
+        });
         lv.setAdapter(hAdapter);
-        getBoardList();
+        Search("all");
 
 
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
                 Work myWork = (Work)(hAdapter.getItem(pos));
                 Log.d("Clicked", myWork.title);
+                Intent intent = new Intent(getApplicationContext(), WorkActivity.class);
+                intent.putExtra("board_idx", myWork.idx);
+                startActivity(intent);
+
             }
         });
 
@@ -57,12 +77,11 @@ public class HomeActivity extends AppCompatActivity {
 
     }
 
-
-    void getBoardList() {
+    void Search(String _search) {
         new Thread() {
             @Override
             public void run() {
-                String serverUri = "http://capstone.louissoft.kr:3000/search/api/all/";
+                String serverUri = "http://capstone.louissoft.kr:3000/search/api/" + _search;
                 try {
                     Log.d("getBoardList Start", "Start2");
                     URL url = new URL(serverUri);
@@ -88,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
 
                         try {
                             JSONArray ja = new JSONArray(buffer.toString());
-
+                            arrWork.clear();
                             for(int i = 0; i < ja.length(); i++) {
                                 Work w = new Work();
                                 w.idx = Integer.parseInt(ja.getJSONObject(i).getString("idx"));

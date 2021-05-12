@@ -2,9 +2,11 @@ package com.example.datadamoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -100,15 +102,29 @@ public class MainActivity extends AppCompatActivity {
 
                     // 로그인 성공
                     if(success) {
-                        Log.d("Cookie: ", cookie);
                         Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
-                        intent.putExtra("cookie", cookie);
+                        SharedPreferences sf = getSharedPreferences("cookie",MODE_PRIVATE);
+                        SharedPreferences.Editor editor = sf.edit();
+                        editor.putString("cookie",cookie);
                         startActivity(intent);
                         finish();
                     }
                     // 로그인 실패
                     else {
-
+                        MainActivity.this.runOnUiThread(new Runnable() {
+                            public void run() {
+                                AlertDialog alertDialog = new AlertDialog.Builder(MainActivity.this).create();
+                                alertDialog.setTitle("로그인 실패");
+                                alertDialog.setMessage("로그인에 실패하였습니다. 아이디 또는 비밀번호를 확인해 주십시오.");
+                                alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int which) {
+                                                dialog.dismiss();
+                                            }
+                                        });
+                                alertDialog.show();
+                            }
+                        });
                     }
                 }
                 catch (MalformedURLException e) {
