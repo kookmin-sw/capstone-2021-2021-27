@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -30,6 +31,7 @@ public class HomeActivity extends AppCompatActivity {
     Button btTest;
     WorkListView lv;
     ArrayList<Work> arrWork = new ArrayList<>();
+    HomeViewAdapter hAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,14 +39,24 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         lv = (WorkListView)findViewById(R.id.home_listview);
+        hAdapter = new HomeViewAdapter(arrWork);
+        lv.setAdapter(hAdapter);
         getBoardList();
+
+
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> list, View v, int pos, long id) {
+                Work myWork = (Work)(hAdapter.getItem(pos));
+                Log.d("Clicked", myWork.title);
+            }
+        });
+
 
         Log.d("getBoardList Start", "finish");
 
 
     }
 
-    // http://capstone.louissoft.kr:3000/search/api/all
 
     void getBoardList() {
         new Thread() {
@@ -84,14 +96,17 @@ public class HomeActivity extends AppCompatActivity {
                                 w.price = Integer.parseInt(ja.getJSONObject(i).getString("price"));
                                 arrWork.add(w);
                             }
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // 이 곳에 UI작업을 한다
+                                    hAdapter.refreshData(arrWork);
+                                    hAdapter.notifyDataSetChanged();
+                                }
+                            });
 
-                            for(int i = 0; i < arrWork.size(); i++) {
-                                Log.d("workList", arrWork.get(i).title);
 
-                            }
 
-                            homeViewAdapter hAdapter = new homeViewAdapter(arrWork);
-                            lv.setAdapter(hAdapter);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

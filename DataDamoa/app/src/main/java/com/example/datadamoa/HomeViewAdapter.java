@@ -10,15 +10,20 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class homeViewAdapter  extends BaseAdapter {
+public class HomeViewAdapter  extends BaseAdapter {
     LayoutInflater inflater = null;
     private ArrayList<Work> boardList = null;
     private int boardListCnt = 0;
 
-    public homeViewAdapter(ArrayList<Work> _data){
+    public HomeViewAdapter(ArrayList<Work> _data){
         boardList = _data;
         boardListCnt = boardList.size();
         Log.d("homeviewadapter", boardListCnt + "");
+    }
+
+    public void refreshData(ArrayList<Work> _data) {
+        boardList = _data;
+        boardListCnt = boardList.size();
     }
 
     @Override
@@ -28,7 +33,7 @@ public class homeViewAdapter  extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return boardList.get(position);
     }
 
     @Override
@@ -55,7 +60,7 @@ public class homeViewAdapter  extends BaseAdapter {
 
         // 과목명, 과제명(강의명), 마감일을 설정하고 View 형태로 리턴한다.
         tvTitle.setText(boardList.get(position).title);
-        tvPrice.setText(boardList.get(position).price + " 원");
+        tvPrice.setText(String.format("%d 원", boardList.get(position).price));
 
 
         return convertView;
