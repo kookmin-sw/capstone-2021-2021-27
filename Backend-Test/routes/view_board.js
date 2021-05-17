@@ -57,6 +57,18 @@ router.get('/api/:bidx', function(req, res, next) {
     });
 });
 
+router.get('/api/detail/:bidx', function(req, res, next) {
+    console.log('api');
+    connection.query(util.format('CALL `capstone_27`.`getBoardInfo`(\'%s\');', req.params.bidx), function(err, results, fields) {
+        if (err) {
+
+        }
+        else {
+            res.json(results[0]);
+        }
+    });
+});
+
 router.post('/', function(req, res, next) {
     connection.query(util.format('CALL `capstone_27`.`writeQuestion`(\'%s\',\'%s\',\'%s\');',  req.query.board_idx, req.body.qa_text, req.session.idx), function(err, results, fields) {
         if (err) {
