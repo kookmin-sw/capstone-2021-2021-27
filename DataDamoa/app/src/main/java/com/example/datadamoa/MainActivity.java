@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                         SharedPreferences sf = getSharedPreferences("cookie",MODE_PRIVATE);
                         SharedPreferences.Editor editor = sf.edit();
                         editor.putString("cookie",cookie);
+                        editor.commit();
                         startActivity(intent);
                         finish();
                     }
