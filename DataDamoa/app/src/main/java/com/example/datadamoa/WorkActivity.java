@@ -97,9 +97,9 @@ public class WorkActivity extends AppCompatActivity {
                             int board_idx = Integer.parseInt(ja.getJSONObject(0).getString("idx"));
                             String title = ja.getJSONObject(0).getString("title");
                             int price = Integer.parseInt(ja.getJSONObject(0).getString("price"));
-                            String context = ja.getJSONObject(0).getString("context");
+                            String content = ja.getJSONObject(0).getString("content");
                             int quantity = Integer.parseInt(ja.getJSONObject(0).getString("quantity"));
-                            int date = Integer.parseInt(ja.getJSONObject(0).getString("date"));
+                   //         int date = Integer.parseInt(ja.getJSONObject(0).getString("date"));
                             int total_price = Integer.parseInt(ja.getJSONObject(0).getString("total_price"));
 
                             runOnUiThread(new Runnable() {
@@ -107,10 +107,10 @@ public class WorkActivity extends AppCompatActivity {
                                 public void run() {
                                     // 이 곳에 UI작업을 한다
                                     tvTitle.setText("제목 : " + title);
-                                    tvContent.setText(context);
-                                    tvprice.setText(price);
-                                    tvquantity.setText(quantity);
-                                    tvtotalprice.setText(total_price);
+                                    tvContent.setText(content);
+                                    tvprice.setText(price+"₩");
+                                    tvquantity.setText(quantity+"개");
+                                    tvtotalprice.setText(total_price+"₩");
 
                                 }
                             });
