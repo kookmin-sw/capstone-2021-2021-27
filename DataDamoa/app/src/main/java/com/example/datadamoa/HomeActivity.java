@@ -111,6 +111,7 @@ public class HomeActivity extends AppCompatActivity {
                             for(int i = 0; i < ja.length(); i++) {
                                 Work w = new Work();
                                 w.idx = Integer.parseInt(ja.getJSONObject(i).getString("idx"));
+
                                 w.title = ja.getJSONObject(i).getString("title");;
                                 w.price = Integer.parseInt(ja.getJSONObject(i).getString("price"));
                                 arrWork.add(w);

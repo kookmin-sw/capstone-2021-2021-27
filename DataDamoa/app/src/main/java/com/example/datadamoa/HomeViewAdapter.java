@@ -43,7 +43,6 @@ public class HomeViewAdapter  extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // todo_item.xml 형태의 셀을 설정한다.
         if (convertView == null)
         {
             final Context context = parent.getContext();
@@ -58,7 +57,6 @@ public class HomeViewAdapter  extends BaseAdapter {
         TextView tvTitle = (TextView) convertView.findViewById(R.id.work_title);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.work_price);
 
-        // 과목명, 과제명(강의명), 마감일을 설정하고 View 형태로 리턴한다.
         tvTitle.setText(boardList.get(position).title);
         tvPrice.setText(String.format("%d 원", boardList.get(position).price));
 

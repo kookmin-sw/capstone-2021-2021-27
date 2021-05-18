@@ -11,49 +11,39 @@ import android.view.MenuItem;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.TextView;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
 
 public class WorkActivity extends AppCompatActivity {
 
-    WebView webview;
-    Map<String, String> extraHeaders = new HashMap<String, String>();
+    TextView tvTitle;
+    TextView tvContent, tvprice, tvquantity, tvtotalprice;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_work);
 
+        tvTitle = (TextView)findViewById(R.id.boardtitle);
+        tvContent = (TextView)findViewById(R.id.boardcontent);
+        tvprice = (TextView)findViewById(R.id.boardprice);
+        tvquantity = (TextView)findViewById(R.id.boardquantity);
+        tvtotalprice = (TextView)findViewById(R.id.boardtotalprice);
+
         Intent intent = this.getIntent();
         int board_idx = intent.getIntExtra("board_idx", 1);
-
-        webview = (WebView) findViewById(R.id.work_webview);
-        CookieManager.getInstance().setAcceptCookie(true);
-
-        SharedPreferences sharedPreferences = getSharedPreferences("cookie",MODE_PRIVATE);
-        String cookie = sharedPreferences.getString("cookie", "no-cookie");
-
-        Log.d("Cookie", cookie);
-        Log.d("WorkActivity", "WorkActivity load");
-
-        extraHeaders.put("Cookie", cookie);
-
-        webview.setWebViewClient(new WebViewClient(){
-            @Override
-            public void onPageFinished(WebView view, String url) {
-                super.onPageFinished(view, url);
-                HideHeader(webview);
-            }
-
-            public boolean shouldOverrideUrlLoading(WebView view, String url){
-                view.loadUrl(url, extraHeaders);
-                Log.d("extraHeader", extraHeaders.toString());
-                return false;
-            }
-        });
-        webview.getSettings().setJavaScriptEnabled(true);
-
-        webview.loadUrl("http://capstone.louissoft.kr:3000/view_board/?board_idx=" + board_idx, extraHeaders);
+        getBoard(board_idx + "");
     }
 
     @Override
@@ -73,17 +63,77 @@ public class WorkActivity extends AppCompatActivity {
                 return super.onOptionsItemSelected(item);
         }
     }
+    void getBoard(String _boardidx) {
+        new Thread() {
+            @Override
+            public void run() {
+                String serverUri = "http://capstone.louissoft.kr:3000/view_board/api/detail/" + _boardidx;
+                try {
+                    Log.d("getBoard", "Start1");
+                    URL url = new URL(serverUri);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+//                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
+                    Log.d("getBoard", "start2");
 
-    public void HideHeader(WebView wv){
+                    if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                        InputStreamReader isr = new InputStreamReader(connection.getInputStream());
+                        BufferedReader br = new BufferedReader(isr);
+                        final StringBuffer buffer = new StringBuffer();
+                        String line = br.readLine();
+                        while (true){
+                            if(line== null){
+                                break;
+                            }
+                            buffer.append(line);
+                            line = br.readLine();
+                        }
+                        Log.d("result", buffer.toString());
 
-        try{
-            wv.loadUrl(
-                    "javascript:(function() { " +
-                            "document.getElementById('menubar').style.display = 'none'; " +
-                            "document.getElementById('main').style.paddingTop = '0';" +
-                            "})()"
-            );
-        }catch (Exception e){}
+                        try {
+                            JSONArray ja = new JSONArray(buffer.toString());
 
+                            int board_idx = Integer.parseInt(ja.getJSONObject(0).getString("idx"));
+                            String title = ja.getJSONObject(0).getString("title");
+                            int price = Integer.parseInt(ja.getJSONObject(0).getString("price"));
+                            String context = ja.getJSONObject(0).getString("context");
+                            int quantity = Integer.parseInt(ja.getJSONObject(0).getString("quantity"));
+                            int date = Integer.parseInt(ja.getJSONObject(0).getString("date"));
+                            int total_price = Integer.parseInt(ja.getJSONObject(0).getString("total_price"));
+
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // 이 곳에 UI작업을 한다
+                                    tvTitle.setText("제목 : " + title);
+                                    tvContent.setText(context);
+                                    tvprice.setText(price);
+                                    tvquantity.setText(quantity);
+                                    tvtotalprice.setText(total_price);
+
+                                }
+                            });
+
+
+
+                        }
+                        catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+//
+                    }
+
+                }
+                catch (MalformedURLException e) {
+                    //
+                    Log.d("getBoadListError", e.toString());
+                } catch (IOException e) {
+                    //
+                    Log.d("getBoadListError", e.toString());
+                }
+            }
+        }.start();
     }
+
 }
