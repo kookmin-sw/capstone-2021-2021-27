@@ -36,6 +36,8 @@ public class WorkActivity extends AppCompatActivity {
     ImageView ivSample1, ivSample2, ivSample3, ivSample4, ivSample5;
     Context context;
 
+    int board_idx = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +59,7 @@ public class WorkActivity extends AppCompatActivity {
 
 
         Intent intent = this.getIntent();
-        int board_idx = intent.getIntExtra("board_idx", 1);
+        board_idx = intent.getIntExtra("board_idx", 1);
         getBoard(board_idx + "");
     }
 
@@ -74,6 +76,7 @@ public class WorkActivity extends AppCompatActivity {
             case R.id.action_upload_photo:
                 Log.d("WorkActivity", "Upload photo click");
                 Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+                intent.putExtra("board_idx", board_idx);
                 startActivity(intent);
                 return true;
             default:
