@@ -3,6 +3,9 @@ var mysql = require('mysql');
 var router = express.Router();
 var util = require('util');
 var bodyParser = require('body-parser');
+const multer = require("multer");
+const path = require("path");
+var uuid = require("uuid");
 
 var connection = mysql.createConnection({
     host     : 'capstone.louissoft.kr',
@@ -12,7 +15,6 @@ var connection = mysql.createConnection({
     database : 'capstone_27'
 });
 connection.connect();
-
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -93,13 +95,58 @@ router.post('/reply', function(req, res, next) {
             res.send('error');
         }
         else {
-            console.log('sucess write answer request');
+            console.log('success write answer request');
             res.redirect(req.get('referer'));
         }
     });
 
 });
 
+let storage = multer.diskStorage({
+    destination: function(req, file ,callback){
+        callback(null, "uploads/")
+    },
+    filename: function(req, file, callback){
+        console.log('save file start');
+        let extension = path.extname(file.originalname);
+        let basename = path.basename(file.originalname, extension);
+        var fname = uuid.v4() + extension;
+        var index = req.files.length - 1;
+
+        var x = req.body.x;
+        var y = req.body.y;
+        var width = req.body.width;
+        var height = req.body.height;
+
+        var work_board_idx = req.body.work_board_idx;
+        var uploader_idx = req.session.idx;
+
+        if(!req.body.fileidx)
+            req.body.fileidx = '';
+
+        // show all 0으로 설정, board_idx 기반으로 게시물 작성자에게만 보여줄 수 있도록.
+        connection.query(util.format('CALL `capstone_27`.`workUpload`(\'img\',\'%s\',  \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');',fname, width, height, x, y, work_board_idx), function(err, results, fields) {
+            if (err) {
+                console.log('error');
+                callback(null, fname);
+            }
+            else {
+                console.log('my file is ' + results[0][0]["file_idx"]);
+                req.body.fileidx += results[0][0]["file_idx"] + ';';
+                callback(null, fname);
+            }
+        });
+    }
+});
+let upload = multer({
+    storage: storage
+});
+
+router.post('/upload', upload.array('imgFile', 1), function(req, res, next) {
+    console.log('upload main post function');
+    console.log('my upload file is ' + req.body.fileidx);
+    res.send('finish');
+});
 
 
 module.exports = router;

@@ -76,12 +76,6 @@ router.post('/', upload.array('imgFile', 5), function(req, res, next) {
             res.send('finish');
         }
     });
-
-
-
-
-
-
 });
 
 module.exports = router;
