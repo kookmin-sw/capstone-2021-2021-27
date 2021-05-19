@@ -73,6 +73,8 @@ public class WorkActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_upload_photo:
                 Log.d("WorkActivity", "Upload photo click");
+                Intent intent = new Intent(getApplicationContext(), CaptureActivity.class);
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
