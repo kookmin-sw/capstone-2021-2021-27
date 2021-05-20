@@ -19,6 +19,7 @@
             <LinearLayout
                 android:layout_width="300dp"
                 android:layout_height="300dp"
+                android:layout_marginBottom="30dp"
                 android:orientation="horizontal">
 
                 <ImageView
@@ -54,43 +55,114 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <TextView
-            android:id="@+id/boardtitle"
-            android:layout_width="290dp"
-            android:layout_height="30dp"
-            android:text="제목 : " />
-        <TextView
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="상세 설명"
-            android:textStyle="bold"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:id="@+id/boardcontent"
-            android:text="body"/>
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/boardprice"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="pirce"
-            android:textStyle="bold"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="30dp">
 
-        <TextView
-            android:id="@+id/boardquantity"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:text="quantity"
-            android:textStyle="bold" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:id="@+id/boardtotalprice"
-            android:text="total_price"
-            android:textStyle="bold"/>
+                <TextView
+                    android:id="@+id/boardquantity"
+                    android:layout_width="355dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="10dp"
+                    android:text="[quantity]"
+                    android:textSize="25dp"
+                    android:textStyle="bold" />
 
+                <TextView
+                    android:id="@+id/boardtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="50dp"
+                    android:text="제목 : "
+                    android:textSize="25dp"
+                    android:textColor="@color/black"
+                    android:textStyle="bold" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="189dp"
+                    android:layout_marginBottom="20dp"
+                    android:orientation="vertical">
+
+
+                    <TextView
+                        android:layout_width="76dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/edge"
+                        android:backgroundTint="#acdeaa"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:text="상세 설명"
+                        android:textColor="@color/white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/boardcontent"
+                        android:layout_width="match_parent"
+                        android:layout_height="135dp"
+                        android:background="@drawable/edge"
+                        android:padding="10dp"
+                        android:text="body"
+                        android:textColor="@color/black" />
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="50dp">
+
+                    <TextView
+                        android:id="@+id/boardprice"
+                        android:layout_width="246dp"
+                        android:layout_height="39dp"
+                        android:gravity="right"
+                        android:paddingLeft="3dp"
+                        android:text="pirce"
+                        android:textSize="25dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="31dp"
+                        android:layout_height="33dp"
+                        android:text=" 원 "
+                        android:textColor="#7eba7b"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="\t / "
+                        android:textColor="#7eba7b"
+                        android:textSize="20dp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="23dp"
+                        android:layout_height="31dp"
+                        android:text=" 개 "
+                        android:textColor="#7eba7b"
+                        android:textSize="18dp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
 
 
     </LinearLayout>

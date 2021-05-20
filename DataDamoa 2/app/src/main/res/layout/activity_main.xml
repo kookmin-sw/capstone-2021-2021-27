@@ -25,7 +25,7 @@
                 android:text="Data Damoa"
                 android:paddingBottom="30dp"
                 android:textStyle="bold"
-                android:textColor="#acdeaa"
+                android:textColor="#FF9800"
                 android:textSize="20pt" />
 
 
@@ -62,7 +62,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:text="LOGIN"
-                    app:backgroundTint="#acdeaa" />
+                    app:backgroundTint="#FF9800" />
             </LinearLayout>
         </LinearLayout>
 

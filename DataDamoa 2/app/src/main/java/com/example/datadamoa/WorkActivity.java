@@ -47,6 +47,7 @@ public class WorkActivity extends AppCompatActivity {
         tvContent = (TextView)findViewById(R.id.boardcontent);
         tvprice = (TextView)findViewById(R.id.boardprice);
         tvquantity = (TextView)findViewById(R.id.boardquantity);
+        tvtotalprice = (TextView)findViewById(R.id.boardtotalprice);
 
         context = WorkActivity.this;
 
@@ -126,10 +127,11 @@ public class WorkActivity extends AppCompatActivity {
                                 @Override
                                 public void run() {
                                     // 이 곳에 UI작업을 한다
-                                    tvquantity.setText("[ "+ quantity +" 개 ]");
                                     tvTitle.setText(title);
                                     tvContent.setText(content);
-                                    tvprice.setText(price+"  ");
+                                    tvprice.setText(price+"₩");
+                                    tvquantity.setText(quantity+"개");
+                                    tvtotalprice.setText(total_price+"₩");
 
                                     Glide.with(context).load("http://capstone.louissoft.kr:3000/file/" + exampleFile[0]).into(ivSample1);
                                     Glide.with(context).load("http://capstone.louissoft.kr:3000/file/" + exampleFile[1]).into(ivSample2);
