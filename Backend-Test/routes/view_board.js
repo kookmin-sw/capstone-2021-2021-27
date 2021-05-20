@@ -124,6 +124,11 @@ let storage = multer.diskStorage({
         if(!req.body.fileidx)
             req.body.fileidx = '';
 
+        if(!req.body.fileuuid)
+            req.body.fileuuid = '';
+
+        req.body.fileuuid = fname;
+
         // show all 0으로 설정, board_idx 기반으로 게시물 작성자에게만 보여줄 수 있도록.
         connection.query(util.format('CALL `capstone_27`.`workUpload`(\'img\',\'%s\',  \'%s\', \'%s\', \'%s\', \'%s\', \'%s\');',fname, width, height, x, y, work_board_idx), function(err, results, fields) {
             if (err) {
@@ -132,7 +137,7 @@ let storage = multer.diskStorage({
             }
             else {
                 console.log('my file is ' + results[0][0]["file_idx"]);
-                req.body.fileidx += results[0][0]["file_idx"] + ';';
+                req.body.fileidx += results[0][0]["file_idx"];
                 callback(null, fname);
             }
         });
@@ -143,9 +148,22 @@ let upload = multer({
 });
 
 router.post('/upload', upload.array('imgFile', 1), function(req, res, next) {
-    console.log('upload main post function');
-    console.log('my upload file is ' + req.body.fileidx);
+    const spawn = require('child_process').spawn;
+    const result = spawn('python', ['sim.py',req.body.work_board_idx, 'uploads/' + req.body.fileuuid]);
+
+    result.stdout.on('data', function(data) {
+        console.log(data.toString());
+        connection.query(util.format('CALL `capstone_27`.`writeSimilar`(\'%s\',\'%s\',\'%s\',\'%s\');', req.session.idx, req.body.fileidx, req.body.work_board_idx, data.toString()), function(err, results, fields) {
+            if (err) {
+                console.log('write similar request failed');
+            }
+            else {
+                console.log('success write similar request');
+            }
+        });
+    });
     res.send('finish');
+
 });
 
 
