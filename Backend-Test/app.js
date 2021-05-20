@@ -45,6 +45,7 @@ app.use('/file', require('./routes/file'));
 app.use('/search', require('./routes/search'));
 app.use('/write_board', require('./routes/write_board'));
 app.use('/view_board', require('./routes/view_board'));
+app.use('/view_work', require('./routes/view_work'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

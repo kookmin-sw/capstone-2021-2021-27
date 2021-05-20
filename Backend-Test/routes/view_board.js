@@ -148,6 +148,9 @@ let upload = multer({
 });
 
 router.post('/upload', upload.array('imgFile', 1), function(req, res, next) {
+    if(!req.session.idx)
+        res.render('login');
+
     const spawn = require('child_process').spawn;
     const result = spawn('python', ['sim.py',req.body.work_board_idx, 'uploads/' + req.body.fileuuid]);
 
@@ -162,7 +165,7 @@ router.post('/upload', upload.array('imgFile', 1), function(req, res, next) {
             }
         });
     });
-    res.send('finish');
+    res.send('upload success.');
 
 });
 
