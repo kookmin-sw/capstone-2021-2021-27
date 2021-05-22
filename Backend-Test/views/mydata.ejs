@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Data Damoa</title>
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/colorChip.css">
+    <link rel="stylesheet" href="/css/header.css">
+    <link rel="stylesheet" href="/css/colorChip.css">
     <meta name="viewport" content="width=device-width, user-scalable=no">
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
@@ -12,7 +12,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
+        main {
+            padding-top: 100px;
+            width: 100%;
+        }
+        main .content_box {
+            padding: 0 50px;
+        }
+        .work_summary {
+            display: inline-block;
+            width: 250px;
+            height: 280px;
+            border: 2px solid var(--main);
+            margin: 10px 25px;
+        }
+        .sum_img {
+            margin: 10px 25px;
+            width: 200px;
+            height: 200px;
+        }
+        .sum_title, .sum_price {
+            margin-left: 25px;
+            color: black;
 
+        }
+        a {
+            text-decoration: none;
+        }
+        .sum_img img {
+            width: 100%;
+            height: 100%;
+        }
     </style>
 </head>
 <body>
@@ -48,12 +78,26 @@
         </div>
     </div>
 </nav>
-<main id="main">
-    <div class="content_box">
-        hi
+<main>
+    <div class="content_box search_result">
+
     </div>
 </main>
 <script>
+    // 현재 파라미터 가져오기
+    // server_url/aaaa/?param1=1234
+    // 에서 param1 값을 가져온다.
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+    }
+
     function EnterCheck(event) {
         if(event.keyCode == 13) {
             Search();
@@ -67,7 +111,45 @@
     $('.search-btn').on('click', function() {
         Search();
     });
+    // 메인 함수
+    $(function() {
+        // api 호출 후 값 받아오기
+        $.get("/my_data/my_board", function(data, status) {
+            console.log(data);
+            var json = data;
+            for(var i = 0; i < json.length; i++) {
+                var title = json[i]["title"];
+                var board_idx = json[i]["idx"];
+                var price = json[i]["price"];
+                var img = json[i]["example_file_idx"].split(';')[0];
+                console.log(img);
+                var html = '<div class="work_summary">' +
+                    '<a href="/my_data/get_data/'+board_idx+'">' +
+                    '<div class="sum_img">' +
+                    '<img src="file/'+img+'">' +
+                    '</div>' +
+                    '<div class="sum_price">' +
+                    price + '원/1개' +
+                    '</div>' +
+                    '<div class="sum_title">' +
+                    title +
+                    '</div>' +
+                    '</a>' +
+                    '</div>';
+                $('.search_result').append(html);
+            }
+
+            if(json.length == 0) {
+                alert('올린 게시물이 없습니다. 홈화면으로 이동합니다.');
+                $(location).attr('href', '/');
+            }
+        });
+    });
+
+
 </script>
-<script src="script/cash.js"></script>
+<script src="/script/cash.js">
+
+</script>
 </body>
 </html>
