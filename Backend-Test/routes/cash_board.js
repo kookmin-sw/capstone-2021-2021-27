@@ -38,8 +38,21 @@ router.get('/', function(req, res, next) {
 
         }
     });
+});
 
+router.get('/api', function(req, res, next) {
+    if(!req.session.idx)
+        res.render('login');
 
+    connection.query(util.format('CALL `capstone_27`.`getKrwInfo`(\'%s\');', req.session.idx), function(err, results, fields) {
+        if (err) {
+
+            console.log('deposit request failed');
+        }
+        else {
+            res.send(results);
+        }
+    });
 });
 
 
