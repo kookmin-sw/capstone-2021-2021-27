@@ -37,6 +37,7 @@
                 android:orientation="vertical">
 
                 <EditText
+
                     android:id="@+id/et_id"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,13 +52,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:hint="PassWord"
+                    android:hint="Password"
                     android:layout_marginBottom="30dp"
                     android:inputType="textPassword"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp" />
 
                 <Button
+
                     android:id="@+id/bt_Login"
                     android:layout_width="match_parent"
                     android:layout_height="50dp"

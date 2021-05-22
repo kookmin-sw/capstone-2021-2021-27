@@ -8,7 +8,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -21,6 +23,8 @@ import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
 import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
@@ -114,6 +118,35 @@ public class CaptureActivity extends AppCompatActivity {
                 .build();
         try {
             Response response = client.newCall(request).execute();
+            if(response.body().string().equals("upload success.")) {
+                // 업로드 완료
+                CaptureActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        Toast.makeText(CaptureActivity.this, "업로드 성공", Toast.LENGTH_SHORT).show();
+                        finish();
+                    }
+                });
+            }
+            else {
+                // 실패
+                CaptureActivity.this.runOnUiThread(new Runnable() {
+                    public void run() {
+                        AlertDialog alertDialog = new AlertDialog.Builder(CaptureActivity.this).create();
+                        alertDialog.setTitle("업로드 실패");
+                        alertDialog.setMessage("업로드에 실패하였습니다. 관리자에게 문의하여 주십시오.");
+                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.dismiss();
+                                    }
+                                });
+                        alertDialog.show();
+                    }
+                });
+            }
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
