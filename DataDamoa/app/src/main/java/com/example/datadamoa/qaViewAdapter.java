@@ -58,8 +58,11 @@ public class qaViewAdapter extends BaseAdapter {
         TextView tvanswer = (TextView) convertView.findViewById(R.id.a);
 
         tvqanick.setText(qaList.get(position).questNick);
-        tvquestion.setText(String.format("%s", qaList.get(position).question));
-        tvanswer.setText(String.format("%s", qaList.get(position).answer));
+        tvquestion.setText(qaList.get(position).question);
+        if(qaList.get(position).answer.equals("null")) {
+            qaList.get(position).answer = "답변 대기중인 질문입니다.";
+        }
+        tvanswer.setText(qaList.get(position).answer);
         return convertView;
     }
 

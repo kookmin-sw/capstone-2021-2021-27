@@ -2,18 +2,24 @@ package com.example.datadamoa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 
@@ -22,7 +28,10 @@ import org.json.JSONException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -39,6 +48,8 @@ public class WorkActivity extends AppCompatActivity {
     qaListView qalv;
     ArrayList<qaWork>  arrqa = new ArrayList<>();
     qaViewAdapter qaAdapter;
+    EditText etQuestion;
+    Button btQuestionSubmit;
 
     int board_idx = 0;
 
@@ -60,11 +71,80 @@ public class WorkActivity extends AppCompatActivity {
         ivSample4 = (ImageView)findViewById(R.id.work_sample_4);
         ivSample5 = (ImageView)findViewById(R.id.work_sample_5);
 
+        etQuestion = (EditText)findViewById(R.id.work_question);
+        btQuestionSubmit = (Button)findViewById(R.id.work_question_submit);
+
         qaAdapter = new qaViewAdapter(arrqa);
         qalv = (qaListView)findViewById(R.id.qa_listview);
 
         qalv.setAdapter(qaAdapter);
 
+        btQuestionSubmit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread() {
+                    @Override
+                    public void run() {
+                        try {
+                            String serverUri = "http://capstone.louissoft.kr:3000/view_board/?board_idx=" + board_idx;
+                            URL url = new URL(serverUri);
+                            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                            connection.setRequestMethod("POST");
+                            connection.setDoInput(true);
+                            connection.setDoOutput(true);
+                            SharedPreferences sf = getSharedPreferences("cookie",MODE_PRIVATE);
+                            connection.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+                            connection.setRequestProperty("Cookie", sf.getString("cookie", ""));
+
+                            StringBuffer buffer = new StringBuffer();
+                            buffer.append("qa_text").append("=").append(etQuestion.getText().toString());
+
+                            OutputStreamWriter outStream = new OutputStreamWriter(connection.getOutputStream(), "UTF-8");
+                            PrintWriter writer = new PrintWriter(outStream);
+                            writer.write(buffer.toString());
+                            writer.flush();
+                            InputStream is = connection.getInputStream();
+                            StringBuilder sb = new StringBuilder();
+                            BufferedReader br = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+                            String result;
+                            while ((result = br.readLine()) != null) {
+                                sb.append(result + "\n");
+                            }
+                            result = sb.toString();
+                            if(result.equals("error")) {
+                                // Error 발생
+                                WorkActivity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        AlertDialog alertDialog = new AlertDialog.Builder(WorkActivity.this).create();
+                                        alertDialog.setTitle("질문 등록 실패");
+                                        alertDialog.setMessage("질문 등록에 실패하였습니다. 관리자에게 문의하여 주십시오.");
+                                        alertDialog.setButton(AlertDialog.BUTTON_NEUTRAL, "확인",
+                                                new DialogInterface.OnClickListener() {
+                                                    public void onClick(DialogInterface dialog, int which) {
+                                                        dialog.dismiss();
+                                                    }
+                                                });
+                                        alertDialog.show();
+                                    }
+                                });
+                            }
+                            else {
+                                WorkActivity.this.runOnUiThread(new Runnable() {
+                                    public void run() {
+                                        etQuestion.setText("");
+                                        Toast.makeText(getApplicationContext(), "질문이 등록되었습니다.", Toast.LENGTH_SHORT).show();
+                                        getQA(board_idx + "");
+                                    }
+                                });
+                            }
+                        }
+                        catch(Exception ex) {
+
+                        }
+                    }
+                }.start();
+            }
+        });
 
         Intent intent = this.getIntent();
         board_idx = intent.getIntExtra("board_idx", 1);
