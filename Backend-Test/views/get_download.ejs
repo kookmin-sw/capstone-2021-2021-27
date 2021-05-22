@@ -91,36 +91,40 @@
         <div class="work_table">
             <div class="work_cell">
                 <div class="table_header_pic">사진</div>
-                <div class="work_title">게시물 제목</div>
-                <div class="work_price">가격</div>
                 <div class="work_sim" style="width: 54px">유사도</div>
-                <div class="work_admit">승인</div>
+                <div class="work_admit">다운로드</div>
             </div>
         </div>
     </div>
 </main>
 <script>
+    function getParam(sname) {
+        var params = location.search.substr(location.search.indexOf("?") + 1);
+        var sval = "";
+        params = params.split("&");
+        for (var i = 0; i < params.length; i++) {
+            temp = params[i].split("=");
+            if ([temp[0]] == sname) { sval = temp[1]; }
+        }
+        return sval;
+    }
+
     $(function(){
         // api 호출
-        $.get("/view_work/api", function(data){
+        $.get("/my_data/download_data/" + getParam('board_idx'), function(data){
             // api 결과
             var arr = data;
             if(arr.length == 0) {
-                alert('승인할 작업이 없습니다!');
+                alert('다운받을 작업이 없습니다!');
             }
             for(var i = 0; i < arr.length; i++) {
                 var idx = arr[i]['idx'];
                 var sim = arr[i]['similarity'];
-                var title = arr[i]['title'];
-                var work_board_idx = arr[i]['work_board_idx'];
                 var file_idx = arr[i]['file_idx'];
-                var price = arr[i]['price'];
                 var htmlstr = '      <div class="work_cell">\n' +
                     '        <a href="view_work/detail/'+idx+'"><img src="/file/'+file_idx+'"></a>\n' +
-                    '        <div class="work_title">'+title+'</div>\n' +
-                    '        <div class="work_price">'+price+'원</div>\n' +
                     '        <div class="work_sim">'+(sim*100).toFixed(2)+'%</div>\n' +
-                    '        <div class="work_admit"><a href="view_work/admit/'+idx+'">승인</a></div>\n' +
+                    '        <div class="work_admit"><a href="/file/' + file_idx + '">이미지</a> <a href="/label/'+file_idx+'">라벨</a></div>\n' +
                     '      </div>';
                 $('.work_table').append(htmlstr);
             }

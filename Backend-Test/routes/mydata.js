@@ -55,7 +55,23 @@ router.get('/download_data', function(req, res, next) {
         });
         return;
     }
+});
 
+router.get('/download_data/:idx', function(req, res, next) {
+    if(!req.session.idx)
+        res.send('need login');
+    else {
+        var tmp = parseInt(req.params.idx);
+        connection.query('CALL `getData`(\''+req.params.idx+'\')', function(err, results, fields)  {
+            if (err) {
+
+            }
+            else {
+                res.json(results[0]);
+            }
+        });
+        return;
+    }
 });
 
 module.exports = router;
