@@ -114,6 +114,7 @@ public class HomeActivity extends AppCompatActivity {
 
                                 w.title = ja.getJSONObject(i).getString("title");;
                                 w.price = Integer.parseInt(ja.getJSONObject(i).getString("price"));
+                                w.example_file_idx = ja.getJSONObject(i).getString("example_file_idx");
                                 arrWork.add(w);
                             }
                             runOnUiThread(new Runnable() {
