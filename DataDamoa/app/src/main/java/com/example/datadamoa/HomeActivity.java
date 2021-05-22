@@ -81,7 +81,7 @@ public class HomeActivity extends AppCompatActivity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
+        getMenuInflater().inflate(R.menu.cashboard, menu);
         return true;
     }
 
@@ -91,6 +91,9 @@ public class HomeActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_cash_board:
                 // 이곳에 캐시보드 출력
+                Intent intent = new Intent(getApplicationContext(), CashboardActivity.class);
+                startActivity(intent);
+                return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
