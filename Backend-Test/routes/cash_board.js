@@ -50,7 +50,7 @@ router.get('/api', function(req, res, next) {
             console.log('deposit request failed');
         }
         else {
-            res.send(results);
+            res.send(results[1]);
         }
     });
 });
