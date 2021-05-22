@@ -6,24 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".CaptureActivity">
 
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_margin="10dp"
         android:orientation="vertical">
 
-        <com.theartofdev.edmodo.cropper.CropImageView
-            android:id="@+id/cropImageView"
+
+        <TextView
+            android:layout_marginTop="10dp"
+            android:layout_width="76dp"
+            android:layout_height="30dp"
+            android:background="@drawable/edge"
+            android:backgroundTint="#acdeaa"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:text="labelling"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="1">
+            android:layout_marginBottom="30dp"
+            android:layout_weight="1"
+            android:background="@drawable/edge"
+            android:orientation="vertical">
 
-        </com.theartofdev.edmodo.cropper.CropImageView>
+            <com.theartofdev.edmodo.cropper.CropImageView
+                android:id="@+id/cropImageView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </com.theartofdev.edmodo.cropper.CropImageView>
+
+
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/button"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Button" />
+            android:layout_margin="5dp"
+
+            android:text="Submit" />
 
     </LinearLayout>
 
