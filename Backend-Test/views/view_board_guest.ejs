@@ -156,8 +156,8 @@
             </div>
             <div class="menu_cell">
                 <ul>
-                    <li><a href="/mypage"><i class="fas fa-user"></i></a></li>
-                    <li><a href="/logout"><b>logout</b></a></li>
+                    <li><a href="/login"><b>login</b></a></li>
+                    <li><a href="/join"><b>join</b></a></li>
                 </ul>
             </div>
         </div>
@@ -200,8 +200,7 @@
                         <form id="form-qa-board" action="" method="POST">
                             <div class="qa-title"><%=myNickname%></div>
                             <hr>
-                            <textarea id="qa_text" name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="문의할 내용을 적어주세요."></textarea>
-                            <button type="button" class="btn btn-primary btn-block btn-q">등 록</button>
+                            <textarea id="qa_text" disabled="true" name="qa_text" cols="2" rows="2" class="form-control input-lg" placeholder="로그인 후 이용해 주세요."></textarea>
                         </form>
                     </div>
                 </div>
@@ -223,30 +222,30 @@
         return sval;
     }
     $(function (){
-       $.get("api/"+getParam("board_idx"), function (data, status){
-           console.log(data);
-           var json = data;
-           for(var i = 0; i < json.length; i++) {
-               var styleNone = "";
-               if(json[i]['answer'] == null) {
-                   json[i]['answer'] = '답변 대기중인 질문입니다.';
-               }
-               else {
-                   styleNone = 'style=\"display: none\"';
-               }
-               if(!showReply)
-                   styleNone = 'style=\"display: none\"';
-               var html = '<div class="qa-box">' +
-                   '<div class="qa-title">'+json[i]['questioner_nickname']+'</div>' +
-                   '<div class="qa-value">Q : '+json[i]['question']+'</div>' +
-                   '<br><form method="POST" action="reply"> <input type="hidden" name="qa_idx" value="'+json[i]['idx']+'">' +
-                   '<div class="qa-value answer-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A : '+json[i]['answer']+'</div>' +
-                   '<input name="reply_text" type="text" class="form-control input-lg " placeholder="답글을 입력해주세요." '+styleNone+'><button type="submit" class="btn btn-primary btn-block" '+styleNone+' >등 록</button></form>' +
-                   '</div>';
+        $.get("api/"+getParam("board_idx"), function (data, status){
+            console.log(data);
+            var json = data;
+            for(var i = 0; i < json.length; i++) {
+                var styleNone = "";
+                if(json[i]['answer'] == null) {
+                    json[i]['answer'] = '답변 대기중인 질문입니다.';
+                }
+                else {
+                    styleNone = 'style=\"display: none\"';
+                }
+                if(!showReply)
+                    styleNone = 'style=\"display: none\"';
+                var html = '<div class="qa-box">' +
+                    '<div class="qa-title">'+json[i]['questioner_nickname']+'</div>' +
+                    '<div class="qa-value">Q : '+json[i]['question']+'</div>' +
+                    '<br><form method="POST" action="reply"> <input type="hidden" name="qa_idx" value="'+json[i]['idx']+'">' +
+                    '<div class="qa-value answer-value">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;A : '+json[i]['answer']+'</div>' +
+                    '<input name="reply_text" type="text" class="form-control input-lg " placeholder="답글을 입력해주세요." '+styleNone+'><button type="submit" class="btn btn-primary btn-block" '+styleNone+' >등 록</button></form>' +
+                    '</div>';
 
-               $('.qa-content').append(html);
-           }
-       });
+                $('.qa-content').append(html);
+            }
+        });
     });
 
     $('.btn-q').on('click', function() {
