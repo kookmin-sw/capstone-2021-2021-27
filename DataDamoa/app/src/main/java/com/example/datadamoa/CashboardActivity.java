@@ -1,6 +1,7 @@
 package com.example.datadamoa;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
@@ -19,14 +20,14 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 
-public class cashBoard extends AppCompatActivity {
+public class CashboardActivity extends AppCompatActivity {
 
     TextView tvcash, tvavailcash, tvdealcash, tvwdcash;
 
     @Override
     protected void onCreate(Bundle saveInstanceState) {
         super.onCreate(saveInstanceState);
-        setContentView(R.layout.activity_cashboard);
+        setContentView(R.layout.activity_cashboard2);
 
         tvcash = (TextView)findViewById(R.id.totalcash);
         tvavailcash = (TextView)findViewById(R.id.availcash);
@@ -46,6 +47,9 @@ public class cashBoard extends AppCompatActivity {
                     HttpURLConnection connection = (HttpURLConnection) url.openConnection();
                     connection.setRequestMethod("GET");
 //                    connection.setDoOutput(true);
+                    SharedPreferences sf = getSharedPreferences("cookie",MODE_PRIVATE);
+                    connection.setRequestProperty("content-type", "application/x-www-form-urlencoded");
+                    connection.setRequestProperty("Cookie", sf.getString("cookie", ""));
                     connection.setDoInput(true);
                     Log.d("getcashBoard", "start2");
 

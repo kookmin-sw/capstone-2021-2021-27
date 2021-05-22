@@ -3,6 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item android:id="@+id/action_cash_board"
-        android:title="캐시 보드"
+        android:title="Cash     "
         app:showAsAction="always" />
 </menu>

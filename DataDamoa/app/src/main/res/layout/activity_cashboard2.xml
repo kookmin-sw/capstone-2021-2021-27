@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    
+    android:orientation="vertical"
+    tools:context=".CashboardActivity">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -12,12 +15,11 @@
         android:orientation="vertical">
 
         <TextView
-            android:layout_width="192dp"
-            android:layout_height="51dp"
+            android:layout_width="105dp"
+            android:layout_height="29dp"
             android:background="@drawable/edge"
             android:backgroundTint="#acdeaa"
             android:gravity="center"
-            android:textSize="10pt"
             android:text="Cash Board"
             android:textColor="@color/white"
             android:textStyle="bold" />
@@ -34,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical"
-                android:layout_margin="70dp"
+                android:layout_margin="50dp"
                 android:gravity="center">
 
                 <LinearLayout
@@ -48,7 +50,6 @@
                         android:text="전체 잔액"
                         android:gravity="left"
                         android:textColor="@color/black"
-                        android:textSize="15pt"
                         android:textStyle="bold" />
 
                     <TextView
@@ -59,14 +60,12 @@
                         android:layout_weight="1"
                         android:text="2000"
                         android:textColor="#acdeaa"
-                        android:textSize="15pt"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="15pt"
                         android:gravity="right"
                         android:text="\t\t\t원"/>
                 </LinearLayout>
@@ -88,7 +87,6 @@
                         android:text="출금 대기"
                         android:gravity="left"
                         android:textColor="@color/black"
-                        android:textSize="12pt"
                         android:textStyle="bold" />
 
                     <TextView
@@ -99,14 +97,12 @@
                         android:layout_weight="1"
                         android:text="2000"
                         android:textColor="#acdeaa"
-                        android:textSize="12pt"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="12pt"
                         android:gravity="right"
                         android:text="\t\t\t원"/>
                 </LinearLayout>
@@ -123,7 +119,6 @@
                         android:text="거래 대기"
                         android:gravity="left"
                         android:textColor="@color/black"
-                        android:textSize="12pt"
                         android:textStyle="bold" />
 
                     <TextView
@@ -134,14 +129,12 @@
                         android:layout_weight="1"
                         android:text="2000"
                         android:textColor="#acdeaa"
-                        android:textSize="12pt"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="12pt"
                         android:gravity="right"
                         android:text="\t\t\t원"/>
                 </LinearLayout>
@@ -150,7 +143,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
-                    android:layout_marginTop="100dp">
+                    android:layout_marginTop="60dp">
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -158,7 +151,6 @@
                         android:text="전체 잔액"
                         android:gravity="left"
                         android:textColor="@color/black"
-                        android:textSize="15pt"
                         android:textStyle="bold" />
 
                     <TextView
@@ -169,14 +161,12 @@
                         android:layout_weight="1"
                         android:text="2000"
                         android:textColor="#acdeaa"
-                        android:textSize="15pt"
                         android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textStyle="bold"
                         android:textColor="@color/black"
-                        android:textSize="15pt"
                         android:gravity="right"
                         android:text="\t\t\t원"/>
                 </LinearLayout>
@@ -190,7 +180,7 @@
 
 
             </LinearLayout>
-            
+
         </LinearLayout>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
