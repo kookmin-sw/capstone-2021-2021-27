@@ -12,6 +12,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
+        .content_box {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+        a {
+            text-decoration: none;
+            font-weight: bold;
+            line-height: 2em;
+        }
+        .mypage {
+            height: 200px;
+            width: 200px;
+            text-align: center;
+            color: white;
+            padding-top: 66px;
+        }
+
+        .mypage:nth-child(1){
+            background-color: #acdeaa;
+        }
+        .mypage:nth-child(2){
+            background-color: #ccdeaa;
+        }
+        .mypage:nth-child(3){
+            background-color: #fcdeaa;
+        }
+
+        .mypage i {
+            font-size: 30px;
+        }
+
     </style>
 </head>
 <body>
@@ -49,7 +81,9 @@
 </nav>
 <main id="main">
     <div class="content_box">
-       Hello my page
+        <a class="mypage" href="view_work"><div><i class="fas fa-user-check"></i><br>작업 승인하기</div></a>
+        <a class="mypage" href="cash_board"><div class=""><i class="fas fa-money-bill-alt"></i><br>캐시보드</div></a>
+        <a class="mypage" href="my_data"><div class=""><i class="fas fa-briefcase"></i><br>데이터 받기</div></a>
     </div>
 </main>
 <script>
