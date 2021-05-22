@@ -6,7 +6,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -56,9 +59,13 @@ public class HomeViewAdapter  extends BaseAdapter {
 
         TextView tvTitle = (TextView) convertView.findViewById(R.id.work_title);
         TextView tvPrice = (TextView) convertView.findViewById(R.id.work_price);
+        ImageView ivWork = (ImageView)convertView.findViewById(R.id.work_item_imageview);
 
         tvTitle.setText(boardList.get(position).title);
         tvPrice.setText(String.format("%d 원", boardList.get(position).price));
+
+        Glide.with(convertView.getContext()).load("http://capstone.louissoft.kr:3000/file/" + boardList.get(position).example_file_idx.split(";")[0]).into(ivWork);
+
 
 
         return convertView;
