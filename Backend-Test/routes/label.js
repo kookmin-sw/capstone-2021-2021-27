@@ -48,7 +48,7 @@ router.get('/:fidx', function(req, res, next) {
                     res.setHeader('Content-type', mimetype); // 파일 형식 지정
 
                     var resultStr = results[0][0]['label_x'] + ',' + results[0][0]['label_y'] + ',' + results[0][0]['label_width'] + ',' + results[0][0]['label_height'];
-                    res.send('hi');
+                    res.send(resultStr);
                 } else {
                     res.send('해당 파일이 없거나 권한이 없습니다.');
                     return;
