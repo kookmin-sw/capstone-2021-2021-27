@@ -30,6 +30,9 @@
             text-overflow: ellipsis;
         }
 
+        .table_header_pic {
+            width: 80px;
+        }
         .work_price {
             width: 70px;
             text-align: center;
@@ -42,6 +45,11 @@
 
         .work_admit {
             float: right;
+        }
+
+        #main .content_box {
+            padding: 50px 100px;
+            overflow: scroll;
         }
     </style>
 </head>
@@ -81,7 +89,13 @@
 <main id="main">
     <div class="content_box">
         <div class="work_table">
-
+            <div class="work_cell">
+                <div class="table_header_pic">사진</div>
+                <div class="work_title">게시물 제목</div>
+                <div class="work_price">가격</div>
+                <div class="work_sim" style="width: 54px">유사도</div>
+                <div class="work_admit">승인</div>
+            </div>
         </div>
     </div>
 </main>
@@ -91,6 +105,9 @@
         $.get("/view_work/api", function(data){
             // api 결과
             var arr = data;
+            if(arr.length == 0) {
+                alert('승인할 작업이 없습니다!');
+            }
             for(var i = 0; i < arr.length; i++) {
                 var idx = arr[i]['idx'];
                 var sim = arr[i]['similarity'];
@@ -109,6 +126,19 @@
             }
         });
 
+    });
+    function EnterCheck(event) {
+        if(event.keyCode == 13) {
+            Search();
+        }
+    }
+    function Search() {
+        var stext = $('#search-text').val();
+        console.log('stext : ' + stext);
+        document.location.href =  '/search?search='+stext;
+    }
+    $('.search-btn').on('click', function() {
+        Search();
     });
 </script>
 </body>

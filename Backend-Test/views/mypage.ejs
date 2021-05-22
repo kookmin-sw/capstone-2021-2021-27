@@ -22,6 +22,9 @@
             font-weight: bold;
             line-height: 2em;
         }
+        a:hover {
+            color: var(--hover);
+        }
         .mypage {
             height: 200px;
             width: 200px;
@@ -87,6 +90,19 @@
     </div>
 </main>
 <script>
+    function EnterCheck(event) {
+        if(event.keyCode == 13) {
+            Search();
+        }
+    }
+    function Search() {
+        var stext = $('#search-text').val();
+        console.log('stext : ' + stext);
+        document.location.href =  '/search?search='+stext;
+    }
+    $('.search-btn').on('click', function() {
+        Search();
+    });
 </script>
 <script src="script/cash.js"></script>
 </body>
