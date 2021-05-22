@@ -26,6 +26,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -35,6 +36,9 @@ public class WorkActivity extends AppCompatActivity {
     TextView tvContent, tvprice, tvquantity, tvtotalprice;
     ImageView ivSample1, ivSample2, ivSample3, ivSample4, ivSample5;
     Context context;
+    qaListView qalv;
+    ArrayList<qaWork>  arrqa = new ArrayList<>();
+    qaViewAdapter qaAdapter;
 
     int board_idx = 0;
 
@@ -56,10 +60,16 @@ public class WorkActivity extends AppCompatActivity {
         ivSample4 = (ImageView)findViewById(R.id.work_sample_4);
         ivSample5 = (ImageView)findViewById(R.id.work_sample_5);
 
+        qaAdapter = new qaViewAdapter(arrqa);
+        qalv = (qaListView)findViewById(R.id.qa_listview);
+
+        qalv.setAdapter(qaAdapter);
+
 
         Intent intent = this.getIntent();
         board_idx = intent.getIntExtra("board_idx", 1);
         getBoard(board_idx + "");
+        getQA(board_idx + "");
     }
 
     @Override
@@ -150,6 +160,73 @@ public class WorkActivity extends AppCompatActivity {
                             e.printStackTrace();
                         }
 //
+                    }
+
+                }
+                catch (MalformedURLException e) {
+                    //
+                    Log.d("getBoadListError", e.toString());
+                } catch (IOException e) {
+                    //
+                    Log.d("getBoadListError", e.toString());
+                }
+            }
+        }.start();
+    }
+    void getQA(String _boardidx) {
+        new Thread() {
+            @Override
+            public void run() {
+                String serverUri = "http://capstone.louissoft.kr:3000/view_board/api/" + _boardidx;
+                try {
+                    Log.d("getBoardQA", "Start");
+                    URL url = new URL(serverUri);
+                    HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                    connection.setRequestMethod("GET");
+//                    connection.setDoOutput(true);
+                    connection.setDoInput(true);
+                    Log.d("getQA", "start2");
+
+                    if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+                        InputStreamReader isr = new InputStreamReader(connection.getInputStream());
+                        BufferedReader br = new BufferedReader(isr);
+                        final StringBuffer buffer = new StringBuffer();
+                        String line = br.readLine();
+                        while (true){
+                            if(line== null){
+                                break;
+                            }
+                            buffer.append(line);
+                            line = br.readLine();
+                        }
+                        Log.d("result", buffer.toString());
+
+                        try {
+                            JSONArray ja = new JSONArray(buffer.toString());
+                            arrqa.clear();
+                            for(int i = 0; i < ja.length(); i++) {
+                                qaWork w = new qaWork();
+                                 w.boardidx = Integer.parseInt(ja.getJSONObject(i).getString("idx"));
+                                 w.question = ja.getJSONObject(i).getString("question");
+                                 w.answer = ja.getJSONObject(i).getString("answer");
+                                 w.questNick = ja.getJSONObject(i).getString("questioner_nickname");
+                                 arrqa.add(w);
+                            }
+                            runOnUiThread(new Runnable() {
+                                @Override
+                                public void run() {
+                                    // 이 곳에 UI작업을 한다
+                                    qaAdapter.refreshData(arrqa);
+                                    qaAdapter.notifyDataSetChanged();
+                                }
+                            });
+
+
+
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
                     }
 
                 }
