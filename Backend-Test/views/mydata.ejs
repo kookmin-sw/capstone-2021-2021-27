@@ -83,7 +83,6 @@
 
     </div>
 </main>
-<script src="css/cash.js"></script>
 <script>
     // 현재 파라미터 가져오기
     // server_url/aaaa/?param1=1234
@@ -115,7 +114,7 @@
     // 메인 함수
     $(function() {
         // api 호출 후 값 받아오기
-        $.get("search/api/" + getParam("search"), function(data, status) {
+        $.get("/my_data/my_board", function(data, status) {
             console.log(data);
             var json = data;
             for(var i = 0; i < json.length; i++) {
@@ -125,12 +124,12 @@
                 var img = json[i]["example_file_idx"].split(';')[0];
                 console.log(img);
                 var html = '<div class="work_summary">' +
-                    '<a href="view_board/?board_idx='+board_idx+'">' +
+                    '<a href="/my_data/get_data/'+board_idx+'">' +
                     '<div class="sum_img">' +
                     '<img src="file/'+img+'">' +
                     '</div>' +
                     '<div class="sum_price">' +
-                     price + '원/1개' +
+                    price + '원/1개' +
                     '</div>' +
                     '<div class="sum_title">' +
                     title +
@@ -141,7 +140,7 @@
             }
 
             if(json.length == 0) {
-                alert('검색 결과가 없습니다. 홈화면으로 이동합니다.');
+                alert('올린 게시물이 없습니다. 홈화면으로 이동합니다.');
                 $(location).attr('href', '/');
             }
         });

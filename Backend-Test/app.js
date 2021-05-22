@@ -47,6 +47,7 @@ app.use('/write_board', require('./routes/write_board'));
 app.use('/view_board', require('./routes/view_board'));
 app.use('/view_work', require('./routes/view_work'));
 app.use('/mypage', require('./routes/mypage'));
+app.use('/my_data', require('./routes/mydata'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
