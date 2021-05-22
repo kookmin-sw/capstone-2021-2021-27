@@ -12,37 +12,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
-        .work_table {
-            border: 1px solid var(--main);
-            border-bottom: 0px;
-        }
-        .work_cell {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid var(--main);
-            padding: 10px;
-            justify-content: space-around;
-        }
-
-        .work_title {
-            width: 150px;
-            text-align: center;
-            text-overflow: ellipsis;
-        }
-
-        .work_price {
-            width: 70px;
-            text-align: center;
-        }
-
-        .work_cell img {
-            width: 80px;
-            height: 80px;
-        }
-
-        .work_admit {
-            float: right;
-        }
     </style>
 </head>
 <body>
@@ -60,10 +29,10 @@
                     <div class="search_table">
                         <div class="search_cell">
                             <div class="textcell">
-                                <input type="text" placeholder="검색어를 입력하세요.">
+                                <input id="search-text" onkeydown="EnterCheck(event);" type="text" placeholder="검색어를 입력하세요.">
                             </div>
                         </div>
-                        <div class="search_cell">
+                        <div class="search_cell search-btn">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
@@ -80,36 +49,11 @@
 </nav>
 <main id="main">
     <div class="content_box">
-        <div class="work_table">
-
-        </div>
+       Hello my page
     </div>
 </main>
 <script>
-    $(function(){
-        // api 호출
-        $.get("/view_work/api", function(data){
-            // api 결과
-            var arr = data;
-            for(var i = 0; i < arr.length; i++) {
-                var idx = arr[i]['idx'];
-                var sim = arr[i]['similarity'];
-                var title = arr[i]['title'];
-                var work_board_idx = arr[i]['work_board_idx'];
-                var file_idx = arr[i]['file_idx'];
-                var price = arr[i]['price'];
-                var htmlstr = '      <div class="work_cell">\n' +
-                    '        <a href="view_work/detail/'+idx+'"><img src="/file/'+file_idx+'"></a>\n' +
-                    '        <div class="work_title">'+title+'</div>\n' +
-                    '        <div class="work_price">'+price+'원</div>\n' +
-                    '        <div class="work_sim">'+(sim*100).toFixed(2)+'%</div>\n' +
-                    '        <div class="work_admit"><a href="view_work/admit/'+idx+'">승인</a></div>\n' +
-                    '      </div>';
-                $('.work_table').append(htmlstr);
-            }
-        });
-
-    });
 </script>
+<script src="script/cash.js"></script>
 </body>
 </html>

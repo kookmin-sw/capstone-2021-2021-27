@@ -37,6 +37,11 @@ router.get('/', function(req, res, next) {
             var split_example_file_idx = param_example_file_idx.split(';');
             var showReply = 'false';
 
+            if(!req.session.idx) {
+                res.render('view_board_guest',{myNickname: myNickname, showReply: showReply, title : title, content : content, price:price, writer_idx:writer_idx, quantity: quantity, file_idx:split_example_file_idx, total_price:total_price, status:status, date:date});
+                return;
+            }
+
             if(req.session.idx == writer_idx)
                 showReply = 'true';
             var myNickname = req.session.nickname;
@@ -72,6 +77,10 @@ router.get('/api/detail/:bidx', function(req, res, next) {
 });
 
 router.post('/', function(req, res, next) {
+    if(!req.session.idx) {
+        res.redirect('/login');
+        return;
+    }
     connection.query(util.format('CALL `capstone_27`.`writeQuestion`(\'%s\',\'%s\',\'%s\');',  req.query.board_idx, req.body.qa_text, req.session.idx), function(err, results, fields) {
         if (err) {
             console.log('write question request failed');

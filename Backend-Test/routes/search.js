@@ -35,6 +35,10 @@ router.get('/api/:text', function(req, res, next) {
 });
 
 router.get('/', function(req, res, next) {
+    if(!req.session.idx) {
+        res.render('search_board_guest');
+        return;
+    }
     res.render('search_board');
 });
 
