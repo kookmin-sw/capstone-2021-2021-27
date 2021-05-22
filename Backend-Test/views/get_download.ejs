@@ -12,36 +12,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
-        main {
-            padding-top: 100px;
-            width: 100%;
+        .work_table {
+            border: 1px solid var(--main);
+            border-bottom: 0px;
         }
-        main .content_box {
-            padding: 0 50px;
+        .work_cell {
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--main);
+            padding: 10px;
+            justify-content: space-around;
         }
-        .work_summary {
-            display: inline-block;
-            width: 250px;
-            height: 280px;
-            border: 2px solid var(--main);
-            margin: 10px 25px;
-        }
-        .sum_img {
-            margin: 10px 25px;
-            width: 200px;
-            height: 200px;
-        }
-        .sum_title, .sum_price {
-            margin-left: 25px;
-            color: black;
 
+        .work_title {
+            width: 150px;
+            text-align: center;
+            text-overflow: ellipsis;
         }
-        a {
-            text-decoration: none;
+
+        .table_header_pic {
+            width: 80px;
         }
-        .sum_img img {
-            width: 100%;
-            height: 100%;
+        .work_price {
+            width: 70px;
+            text-align: center;
+        }
+
+        .work_cell img {
+            width: 80px;
+            height: 80px;
+        }
+
+        .work_admit {
+            float: right;
+        }
+
+        #main .content_box {
+            padding: 50px 100px;
+            overflow: scroll;
         }
     </style>
 </head>
@@ -60,10 +68,10 @@
                     <div class="search_table">
                         <div class="search_cell">
                             <div class="textcell">
-                                <input id="search-text" onkeydown="EnterCheck(event);" type="text" placeholder="검색어를 입력하세요.">
+                                <input type="text" placeholder="검색어를 입력하세요.">
                             </div>
                         </div>
-                        <div class="search_cell search-btn">
+                        <div class="search_cell">
                             <i class="fas fa-search"></i>
                         </div>
                     </div>
@@ -78,26 +86,47 @@
         </div>
     </div>
 </nav>
-<main>
-    <div class="content_box search_result">
-
+<main id="main">
+    <div class="content_box">
+        <div class="work_table">
+            <div class="work_cell">
+                <div class="table_header_pic">사진</div>
+                <div class="work_title">게시물 제목</div>
+                <div class="work_price">가격</div>
+                <div class="work_sim" style="width: 54px">유사도</div>
+                <div class="work_admit">승인</div>
+            </div>
+        </div>
     </div>
 </main>
 <script>
-    // 현재 파라미터 가져오기
-    // server_url/aaaa/?param1=1234
-    // 에서 param1 값을 가져온다.
-    function getParam(sname) {
-        var params = location.search.substr(location.search.indexOf("?") + 1);
-        var sval = "";
-        params = params.split("&");
-        for (var i = 0; i < params.length; i++) {
-            temp = params[i].split("=");
-            if ([temp[0]] == sname) { sval = temp[1]; }
-        }
-        return sval;
-    }
+    $(function(){
+        // api 호출
+        $.get("/view_work/api", function(data){
+            // api 결과
+            var arr = data;
+            if(arr.length == 0) {
+                alert('승인할 작업이 없습니다!');
+            }
+            for(var i = 0; i < arr.length; i++) {
+                var idx = arr[i]['idx'];
+                var sim = arr[i]['similarity'];
+                var title = arr[i]['title'];
+                var work_board_idx = arr[i]['work_board_idx'];
+                var file_idx = arr[i]['file_idx'];
+                var price = arr[i]['price'];
+                var htmlstr = '      <div class="work_cell">\n' +
+                    '        <a href="view_work/detail/'+idx+'"><img src="/file/'+file_idx+'"></a>\n' +
+                    '        <div class="work_title">'+title+'</div>\n' +
+                    '        <div class="work_price">'+price+'원</div>\n' +
+                    '        <div class="work_sim">'+(sim*100).toFixed(2)+'%</div>\n' +
+                    '        <div class="work_admit"><a href="view_work/admit/'+idx+'">승인</a></div>\n' +
+                    '      </div>';
+                $('.work_table').append(htmlstr);
+            }
+        });
 
+    });
     function EnterCheck(event) {
         if(event.keyCode == 13) {
             Search();
@@ -111,42 +140,6 @@
     $('.search-btn').on('click', function() {
         Search();
     });
-    // 메인 함수
-    $(function() {
-        // api 호출 후 값 받아오기
-        $.get("/my_data/my_board", function(data, status) {
-            console.log(data);
-            var json = data;
-            for(var i = 0; i < json.length; i++) {
-                var title = json[i]["title"];
-                var board_idx = json[i]["idx"];
-                var price = json[i]["price"];
-                var img = json[i]["example_file_idx"].split(';')[0];
-                console.log(img);
-                var html = '<div class="work_summary">' +
-                    '<a href="/my_data/download_data?board_idx='+board_idx+'">' +
-                    '<div class="sum_img">' +
-                    '<img src="file/'+img+'">' +
-                    '</div>' +
-                    '<div class="sum_price">' +
-                    price + '원/1개' +
-                    '</div>' +
-                    '<div class="sum_title">' +
-                    title +
-                    '</div>' +
-                    '</a>' +
-                    '</div>';
-                $('.search_result').append(html);
-            }
-
-            if(json.length == 0) {
-                alert('올린 게시물이 없습니다. 홈화면으로 이동합니다.');
-                $(location).attr('href', '/');
-            }
-        });
-    });
-
-
 </script>
 <script src="/script/cash.js">
 

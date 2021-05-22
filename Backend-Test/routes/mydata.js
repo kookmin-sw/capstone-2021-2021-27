@@ -41,4 +41,21 @@ router.get('/my_board', function(req, res, next) {
 
 });
 
+router.get('/download_data', function(req, res, next) {
+    if(!req.session.idx)
+        res.send('need login');
+    else {
+        connection.query('SELECT * FROM work_board WHERE writer_idx=' + req.session.idx, function(err, results, fields) {
+            if (err) {
+
+            }
+            else {
+                res.render('get_download');
+            }
+        });
+        return;
+    }
+
+});
+
 module.exports = router;
