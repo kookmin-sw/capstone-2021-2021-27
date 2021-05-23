@@ -12,8 +12,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.min.js" integrity="sha512-FHa4dxvEkSR0LOFH/iFH0iSqlYHf/iTwLc5Ws/1Su1W90X0qnxFxciJimoue/zyOA/+Qz/XQmmKqjbubAAzpkA==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css" integrity="sha512-jO9KUHlvIF4MH/OTiio0aaueQrD38zlvFde9JoEA+AQaCNxIJoX4Kjse3sO2kqly84wc6aCtdm9BIUpYdvFYoA==" crossorigin="anonymous" />
     <style>
+        .logo{
+            color: #212529;
+            font-weight: bold;
+            font-size: 25px;
+        }
         #section1 {
-            padding: 200px 0px;
+            padding: 150px 0px;
             text-align: center;
         }
 
@@ -21,6 +26,13 @@
             font-family: 'Argon-normal';
             font-size: 54px;
             font-weight: bold;
+            text-align: center;
+        }
+        #section1 .logotitle {
+            font-family: 'Noto Sans CJK KR';
+            font-size: 40px;
+            font-weight: bold;
+            margin-top: 20px;
             text-align: center;
         }
 
@@ -34,7 +46,7 @@
             display: inline-block;
             padding: 10px 20px;
             font-family: 'Montserrat';
-            margin-top: 30px;
+            margin-top: 100px;
             border: 2px solid var(--main);
             color: var(--main);
         }
@@ -80,7 +92,9 @@
     <div class="content_box">
         <div class="menu_table">
             <div class="menu_cell">
-                로고
+                <div class="logo">
+                    <b> Damoa </b>
+                </div>
             </div>
             <div class="menu_cell">
                 <div class="search_box">
@@ -109,13 +123,13 @@
     <div id="section1">
         <div class="content_box">
             <div class="title">
-                Data Damoa
+                <img src="media/logo_greenb.png" width = "650" height="400">
             </div>
-            <div class="subtitle">
+            <div class="logotitle">
                 데이터가 돈이 되는 시대.
             </div>
             <a href="https://github.com/kookmin-sw/capstone-2021-27"><div class="button">
-                    Document
+                    <b>Document</b>
                 </div></a>
         </div>
     </div>
@@ -128,7 +142,7 @@
                 이제 당신이 필요한 데이터를 손쉽게 구할 수 있습니다.<br>필요한 데이터는 바로 요청하십시오.
             </div>
             <a href="write_board"><div class="button">
-                    요청하기
+                    <b>요청하기</b>
                 </div></a>
         </div>
     </div>
