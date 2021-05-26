@@ -4,8 +4,8 @@ var router = express.Router();
 var util = require('util');
 
 var connection = mysql.createConnection({
-    host     : 'capstone.louissoft.kr',
-    port     : '26773',
+    host     : 'localhost',
+    port     : '3306',
     user     : 'capstone_27',
     password : 'zoqtmxhs27wh!',
     database : 'capstone_27'

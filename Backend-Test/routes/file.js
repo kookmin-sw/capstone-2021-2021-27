@@ -7,8 +7,8 @@ var mime = require('mime');
 var path = require('path');
 
 var connection = mysql.createConnection({
-    host     : 'capstone.louissoft.kr',
-    port     : '26773',
+    host     : 'localhost',
+    port     : '3306',
     user     : 'capstone_27',
     password : 'zoqtmxhs27wh!',
     database : 'capstone_27'
